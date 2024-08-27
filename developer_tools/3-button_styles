@@ -1,0 +1,13 @@
+padding: 1rem 1.75rem;
+font-size: 1.25rem;
+display: inline-block;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+-moz-user-select: none;
+-ms-usr-select: none;
+user-select: none;
+border: 0.125rem solid transparent;
+line-height: 1.5;
+border-radius: 0.5rem;
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
