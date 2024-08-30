@@ -16,7 +16,7 @@
 
 ## :computer: <span id="overview">Overview</span>
 This project focuses on understanding and implementing the key elements in the `<head>` section of an HTML document. It covers topics such as the `<title>` tag, favicons, metadata, and SEO basics. This project is part of the Smile School curriculum, designed to enhance your HTML skills.
-## :bomb: <span id="learning objective">Learning Objective</span>
+## :school: <span id="learning objective">Learning Objective</span>
 
 By the end of this project, you should be able to explain:
 
