@@ -1,53 +1,100 @@
 /* General Styles */
 body {
     background-color: #b3b3cc;
-    color: #660066
+    color: #660066;
 }
 
 /* Side Rectangle */
 .left-side, .right-side {
-    width: 200px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    bottom: 0;
+    width: 125px;
+    position: absolute;
+    top: 80px;
+    height: calc(100vh - 80px);
     overflow-y: auto;
     z-index: 10;
+    background-color: #c4c3d0;
+    padding: 10px;
 }
 
 .left-side {
-    left: 0;
-    background-color: #e0e0e0;
+    left: 10px;
 }
 
 .right-side {
-    right: 0;
-    background-color: #d0d0d0;
+    right: 10px;
 }
 
 /* Main Content Container */
 .content-container {
-    margin-left: 220px;
-    margin-right: 220px;
+    margin-left: 150px;
+    margin-right: 150px;
     padding: 20px;
+    position: relative; /* Ensure content-container stays below side rectangles */
+    z-index: 1; /* Ensures content-container is above side rectangles */
 }
 
 /* Header Section */
 .welcome-box {
-    width: 80%;
-    max-width: 700px;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #c4c3d0;
     color: #660066;
-    border: 2px solid #660066;
-    border-radius: 10px;
+    /*border: 2px solid #660066;*/
+    /*border-radius: 10px;*/
     margin-top: 50px;
+    box-sizing: border-box;
 }
 
 /* Header Section */
 .welcome-box h1 {
     text-align: center;
+}
+
+/* About Me Box */
+.about-me-box {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #c4c3d0;
+    color: #660066;
+    box-sizing: border-box;
+}
+
+/* Profile Photo */
+.profile-photo {
+    width: 175px;
+    height: auto;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+}
+
+/* Charlie images */
+.char-images {
+    width: 175px;
+    height: auto;
+}
+
+.char-img {
+    width: 50%;
+    height: auto;
+}
+
+/* Levi images */
+.levi-images {
+    width: 175px;
+    height: auto;
+}
+
+.levi-img {
+    width: 50%;
+    height: auto;
 }
 
 /* Music Bar */
@@ -67,22 +114,11 @@ body {
 }
 
 .music-bar span {
-    animation: scroll 10s linear
+    animation: scroll 10s linear;
 }
 
 /* keyframes for Scrolling Animation */
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
-}
-
-/* Profile Photo */
-.profile-photo {
-    width: 175px;
-    height: auto;
-}
-
-.profile-img {
-    width: 100%;
-    height: auto;
 }
