@@ -14,6 +14,7 @@ body {
     z-index: 10;
     background-color: #c4c3d0;
     padding: 10px;
+    border: 2px solid #660066;
 }
 
 .left-side {
@@ -41,10 +42,11 @@ body {
     padding: 20px;
     background-color: #c4c3d0;
     color: #660066;
-    /*border: 2px solid #660066;*/
+    border: 2px solid #660066;
     /*border-radius: 10px;*/
     margin-top: 50px;
     box-sizing: border-box;
+    flex-direction: row-reverse;
 }
 
 /* Header Section */
@@ -54,20 +56,26 @@ body {
 
 /* About Me Box */
 .about-me-box {
-    display: flex;
+    /*display: flex;*/
     width: 100%;
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
+    margin-right: 100px;
     background-color: #c4c3d0;
     color: #660066;
     box-sizing: border-box;
+    border: 2px solid #660066;
+    margin-top: 20px;
+    position: relative;
+    left: 0;
 }
 
 /* Profile Photo */
 .profile-photo {
     width: 175px;
     height: auto;
+    margin-left: -7px;
 }
 
 .profile-img {
@@ -82,7 +90,7 @@ body {
 }
 
 .char-img {
-    width: 50%;
+    width: 75%;
     height: auto;
 }
 
@@ -93,7 +101,7 @@ body {
 }
 
 .levi-img {
-    width: 50%;
+    width: 75%;
     height: auto;
 }
 
