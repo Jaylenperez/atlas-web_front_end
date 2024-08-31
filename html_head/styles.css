@@ -104,6 +104,114 @@ body {
     height: auto;
 }
 
+/* Pets Box */
+.pets-box {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #c4c3d0;
+    color: #660066;
+    box-sizing: border-box;
+    border: 2px solid #660066;
+    margin-top: 20px;
+    position: relative;
+    left: 0;
+    padding-bottom: 40px;
+}
+
+/* Centers Pets heading within the .pets-box */
+.pets-box h2 {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Add full-width line under Pets heading */
+.pets-box h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #660066;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Education Box */
+.education-box {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #c4c3d0;
+    color: #660066;
+    box-sizing: border-box;
+    border: 2px solid #660066;
+    margin-top: 20px;
+    position: relative;
+    left: 0;
+    padding-bottom: 40px;
+}
+
+/* Centers Education heading within the .education-box */
+.education-box h2 {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Add full-width line under Education heading */
+.education-box h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #660066;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Career Box */
+.career {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #c4c3d0;
+    color: #660066;
+    box-sizing: border-box;
+    border: 2px solid #660066;
+    margin-top: 20px;
+    position: relative;
+    left: 0;
+    padding-bottom: 40px;
+}
+
+/* Centers Career heading within the .career-box */
+.career h2 {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Add full-width line under Career heading */
+.career h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #660066;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 /* Charlie images */
 .char-images {
     width: 175px;
