@@ -9,7 +9,7 @@ body {
     width: 125px;
     position: absolute;
     top: 80px;
-    height: 100%;
+    height: fit-content;
     overflow-y: auto;
     z-index: 998;
     background-color: #c4c3d0;
