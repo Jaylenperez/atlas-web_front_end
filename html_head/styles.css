@@ -9,12 +9,13 @@ body {
     width: 125px;
     position: absolute;
     top: 80px;
-    height: calc(100vh + 1570px);
+    height: 100%;
     overflow-y: auto;
-    z-index: 10;
+    z-index: 998;
     background-color: #c4c3d0;
     padding: 10px;
     border: 2px solid #660066;
+    bottom: 0;
 }
 
 .left-side {
