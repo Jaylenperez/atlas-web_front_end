@@ -19,10 +19,12 @@ body {
     bottom: 0;
 }
 
+/* Left Side Panel */
 .left-side {
     left: 10px;
 }
 
+/* Right Side Panel */
 .right-side {
     right: 10px;
 }
@@ -40,10 +42,12 @@ body {
 
 .navigation-menu li a {
     text-decoration: none;
+    text-decoration: none;
+    color: #0067a5;
 }
 
 .navigation-menu li a:hover {
-    color: #660066;
+    color: #002147;
 }
 
 /* Main Content Container */
@@ -126,6 +130,7 @@ body {
     border: 1.5px solid #660066;
 }
 
+/* About Me Icons */
 .aboutme-icons {
     width: 15px;
     height: auto;
