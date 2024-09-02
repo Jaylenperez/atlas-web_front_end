@@ -2,6 +2,7 @@
 body {
     background-color: #b3b3cc;
     color: #660066;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 /* Side Rectangle */
@@ -14,7 +15,7 @@ body {
     z-index: 998;
     background-color: #c4c3d0;
     padding: 10px;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
     bottom: 0;
 }
 
@@ -43,7 +44,7 @@ body {
     padding: 20px;
     background-color: #c4c3d0;
     color: #660066;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
     /*border-radius: 10px;*/
     margin-top: 50px;
     box-sizing: border-box;
@@ -66,11 +67,11 @@ body {
     background-color: #c4c3d0;
     color: #660066;
     box-sizing: border-box;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
     margin-top: 20px;
     position: relative;
     left: 0;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 
 /* Centers About Me heading within the .about-me-box */
@@ -103,7 +104,7 @@ body {
 .profile-img {
     width: 100%;
     height: auto;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
 }
 
 .aboutme-icons {
@@ -122,7 +123,7 @@ body {
     background-color: #c4c3d0;
     color: #660066;
     box-sizing: border-box;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
     margin-top: 20px;
     position: relative;
     left: 0;
@@ -158,7 +159,7 @@ body {
     background-color: #c4c3d0;
     color: #660066;
     box-sizing: border-box;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
     margin-top: 20px;
     position: relative;
     left: 0;
@@ -194,7 +195,7 @@ body {
     background-color: #c4c3d0;
     color: #660066;
     box-sizing: border-box;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
     margin-top: 20px;
     position: relative;
     left: 0;
@@ -230,7 +231,7 @@ body {
 .char-img {
     width: 100%;
     height: auto;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
 }
 
 /* Levi images */
@@ -242,7 +243,7 @@ body {
 .levi-img {
     width: 100%;
     height: auto;
-    border: 2px solid #660066;
+    border: 1.5px solid #660066;
 }
 
 /* Music Bar */
