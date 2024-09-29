@@ -1,0 +1,13 @@
+/* Assigns text color #3D3D3D to the HTML tags body and p. */
+
+/* Define the color variable */
+$main-text-color: #3D3D3D;
+
+/* Apply the color to the body and p elements */
+body {
+    color: $main-text-color;
+}
+
+p {
+    color: $main-text-color;
+}
