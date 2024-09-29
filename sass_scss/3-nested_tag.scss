@@ -1,0 +1,11 @@
+/* Assign no margin or padding to body and margin to p inside body */
+
+body {
+    margin: 0px;
+    padding: 0px;
+  
+    p {
+      margin: 10px;
+    }
+  }
+  
