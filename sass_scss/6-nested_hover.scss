@@ -1,0 +1,8 @@
+/* Set the default text color for all <button> elements to #FF0000 */
+button {
+    color: #FF0000;
+  
+    &:hover {
+      color: #00FF00;
+    }
+  }
