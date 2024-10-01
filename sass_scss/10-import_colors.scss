@@ -1,0 +1,15 @@
+/* Assign the imported color variables to respective CSS classes */
+@import '10-colors';
+
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.blue {
+  color: $blue;
+}
