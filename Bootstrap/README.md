@@ -17,7 +17,7 @@
         <br>
         :camera: <a href="#pictures">Pictures</a>
         <br>
-        :alien: <a href="#authors">Authors</a>
+        :sparkles: <a href="#authors">Authors</a>
 </details>
 
 ## :memo: <span id="description">Description</span>
@@ -48,7 +48,7 @@ Key skills developed:
 
 (https://github.com/yourusername/yourrepository/images/yourimage.png)
 
-## :alien: <span id="authors">Authors</span>
+## :sparkles: <span id="authors">Authors</span>
 
 **Jaylen Perez**
 - Github: [@Jaylenperez](https://github.com/Jaylenperez)
