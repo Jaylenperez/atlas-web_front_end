@@ -14,57 +14,59 @@
     <body>
         <div class="container-lg p-5">
             <div class="row">
+                <!-- Card 1 -->
                 <div class="col-sm">
-                    <div class="card mt-4">
+                    <div class="mt-4 card">
                         <div class="card-header">Coding</div>
-                        <img src="https://via.placeholder.com/450x200" />
+                        <img src="https://via.placeholder.com/450x200" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">HTML</h5>
                             <p class="card-text">Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser.</p>
-                            <button data-toggle="modal" data-target="#playModal" class="btn btn-danger">Play with</button>
+                            <button data-toggle="modal" data-target="#playModal" class="btn-danger btn">Play with</button>
                         </div>
                         <div class="card-footer">40h</div>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <div>Coding</div>
-                        <img src="https://via.placeholder.com/450x200" />
-                        <div>
-                            <h5>CSS</h5>
-                            <p>Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML.</p>
-                            <button data-toggle="modal" data-target="#playModal" class="btn btn-danger">Play with</button>
+                <!-- Card 2 -->
+                <div class="col-sm">
+                    <div class="mt-4 card">
+                        <div class="card-header">Coding</div>
+                        <img src="https://via.placeholder.com/450x200" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">CSS</h5>
+                            <p class="card-text">Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML.</p>
+                            <button data-toggle="modal" data-target="#playModal" class="btn-danger btn">Play with</button>
                         </div>
-                        <div>35h</div>
+                        <div class="card-footer">35h</div>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <div>Coding</div>
-                        <img src="https://via.placeholder.com/450x200" />
-                        <div>
-                            <h5>Javascript</h5>
-                            <p>JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification.</p>
-                            <button data-toggle="modal" data-target="#playModal" class="btn btn-danger">Play with</button>
+                <!-- Card 3 -->
+                <div class="col-sm">
+                    <div class="mt-4 card">
+                        <div class="card-header">Coding</div>
+                        <img src="https://via.placeholder.com/450x200" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">Javascript</h5>
+                            <p class="card-text mb-5">JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification.</p>
+                            <button data-toggle="modal" data-target="#playModal" class="btn-danger btn">Play with</button>
                         </div>
-                        <div>70h</div>
+                        <div class="card-footer">35h</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal -->
-        <!-- Need to center horizontally & vertically -->
-        <div id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModal" aria-hidden="true">
-            <div role="document">
-                <div>
-                    <div>
-                        <h5 id="exampleModalLabel">Play with CodePen</h5>
-                        <button type="button" data-dismiss="modal" aria-label="Close">
+        <div id="playModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="playModal" aria-hidden="true">
+            <div role="document" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="exampleModalLabel" class="modal-title">Play with CodePen</h5>
+                        <button type="button" data-dismiss="modal" class="close" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div>
+                    <div class="modal-body">
                         <p>
                             CodePen is an online community for testing and showcasing user-created HTML, CSS and JavaScript code snippets. 
                             It functions as an online code editor and open-source learning environment, where developers can create code snippets, called "pens," and test them.
@@ -77,24 +79,24 @@
                             CodePen is one of the largest communities for web designers and developers to showcase their coding skills, with an estimated 330,000 registered users and 14.16 million monthly visitors.
                         </p>
 
-                        <form class="border-top pt-3">
+                        <form>
                             <div class="form-group">
                                 <h5>Connect</h5>
                             </div>
-                            <div>
+                            <div class="form-group">
                                 <label for="username">Username</label>
                                 <div>
-                                    <input type="text" id="username" />
+                                    <input type="text" id="username" class="form-control" />
                                 </div>
                             </div>
-                            <div>
+                            <div class="form-group">
                                 <label for="password">Password</label>
                                 <div>
-                                    <input type="password" id="password" />
+                                    <input type="password" id="password" class="form-control" />
                                 </div>
                             </div>
-                            <div>
-                                <button type="submit" class="btn btn-danger">Connect</button>
+                            <div class="form-group border-top pt-2">
+                                <button type="submit" class="btn btn-danger float-right">Connect</button>
                             </div>
                         </form>
                     </div>
