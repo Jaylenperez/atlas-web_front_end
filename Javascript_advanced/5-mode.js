@@ -58,25 +58,25 @@ function changeMode(size, weight, transform, background, color) {
     spookyButton.style.position = 'fixed';  // Fix to the bottom
     spookyButton.style.bottom = '5px';     // Distance from the bottom
     spookyButton.style.left = '1%';        // Center horizontally
-    spookyButton.style.transform = 'translateX(-1%)'; // Correct for ex
+    spookyButton.style.transform = 'translateX(-1%)'; // Correct for exact centering
     document.body.appendChild(spookyButton);
   
     const darkButton = document.createElement('button');
     darkButton.textContent = 'Dark Mode';
     darkButton.onclick = darkMode;
-    darkButton.style.position = 'fixed';  // Fix to the bottom
-    darkButton.style.bottom = '5px';     // Distance from the bottom
-    darkButton.style.left = '6.3%';        // Center horizontally
-    darkButton.style.transform = 'translateX(-6.3%)'; // Correct for exact 
+    darkButton.style.position = 'fixed';
+    darkButton.style.bottom = '5px';
+    darkButton.style.left = '6.3%';
+    darkButton.style.transform = 'translateX(-6.3%)';
     document.body.appendChild(darkButton);
   
     const screamButton = document.createElement('button');
     screamButton.textContent = 'Scream Mode';
     screamButton.onclick = screamMode;
-    screamButton.style.position = 'fixed';  // Fix to the bottom
-    screamButton.style.bottom = '5px';     // Distance from the bottom
-    screamButton.style.left = '13.5%';        // Center horizontally
-    screamButton.style.transform = 'translateX(-13.5%)'; // 
+    screamButton.style.position = 'fixed';
+    screamButton.style.bottom = '5px';
+    screamButton.style.left = '13.5%';
+    screamButton.style.transform = 'translateX(-13.5%)';
     document.body.appendChild(screamButton);
   }
   
