@@ -11,7 +11,7 @@
         <br>
         :floppy_disk: <a href="#requirements">Requirements</a>
         <br>
-        :alien: <a href="#authors">Authors</a>
+        :sparkles: <a href="#authors">Authors</a>
 </details>
 
 ## :memo: <span id="description">Description</span>
