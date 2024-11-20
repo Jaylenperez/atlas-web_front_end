@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task 4</title>
+    <!-- Load latest Slim & Minified version of jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
+</head>
+
+<body>
+    <script type="application/javascript">
+        // Function to create the initial family tree table
+        function createFamilyTree() {
+            $('body').append(
+                $('<table>').append(
+                    $('<thead>').append(
+                        $('<tr>').append(
+                            $('<th>').text('Firstname'),
+                            $('<th>').text('Lastname')
+                        )
+                    ),
+                    $('<tbody>').append(
+                        $('<tr>').append(
+                            $('<td>').text('Guillaume'),
+                            $('<td>').text('Salva')
+                        ),
+                        $('<tr>').append(
+                            $('<td>').text('Paulette'),
+                            $('<td>').text('Salva')
+                        ),
+                        $('<tr>').append(
+                            $('<td>').text('Antoine'),
+                            $('<td>').text('Salva')
+                        )
+                    )
+                )
+            );
+        }
+
+        // Function to replace the tbody content with new data
+        function replaceFamilyTree() {
+            $('tbody').html(
+                $('<tr>').append(
+                    $('<td>').text('Gerard'),
+                    $('<td>').text('Bonissa')
+                )
+            );
+        }
+
+        // Call the functions in order
+        createFamilyTree();
+        replaceFamilyTree();
+    </script>
+</body>
+
+</html>
