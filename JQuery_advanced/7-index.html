@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Task 7</title>
+    <!-- Load the minified version of jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <style>
+        /* Basic form and result styling */
+        form {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            margin-right: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <script type="application/javascript">
+        // Function to create the search form
+        function createSearchForm() {
+            const form = $('<form>');
+
+            // Add text input field
+            form.append($('<input>').attr({
+                type: 'text',
+                placeholder: '',
+                style: 'border: 1px solid #D3D3D3;'
+            }));
+
+            // Add submit button
+            form.append($('<input>').attr({
+                type: 'submit',
+                value: 'Search',
+                style: 'background-color: white; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #D3D3D3; border-radius: 5px;'
+            }));
+
+            // Add empty ul element for search results
+            form.append($('<ul>'));
+
+            // Add form submission functionality
+            form.on('submit', function(e) {
+                e.preventDefault(); // Prevent form from reloading the page
+
+                const searchQuery = form.find('input[type="text"]').val();
+                if (searchQuery) {
+                    queryWikipedia(searchQuery);
+                } else {
+                    alert('Please enter a search term');
+                }
+            });
+
+            // Append the form to the body
+            $('body').prepend(form);
+        }
+
+        // Function to add a new article to the list
+        function addNewArticle(id, title, snippet) {
+            const li = $('<li>');
+
+            // Add id and title without spans
+            li.append($('<p>').text(`id: ${title}`));
+
+            // Remove any HTML tags from the snippet by using .text()
+            const plainSnippet = $('<div>').html(snippet).text();
+            li.append($('<p>').text(plainSnippet));
+
+            $('ul').append(li);
+        }
+
+        // Function to query Wikipedia API
+        function queryWikipedia(search) {
+            // Create the API URL with the search query
+            const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json&origin=*`;
+
+            // Use AJAX to get data from the Wikipedia API
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(response) {
+                    const results = response.query.search;
+                    $('ul').empty(); // Clear previous results
+
+                    results.forEach(function(result) {
+                        const id = result.pageid;
+                        const title = result.title;
+                        const snippet = result.snippet;
+
+                        // Add the article to the list
+                        addNewArticle(id, title, snippet);
+                    });
+                },
+                error: function() {
+                    alert('Error retrieving data');
+                }
+            });
+        }
+
+        // Call the function to create the search form when the page loads
+        $(document).ready(function() {
+            createSearchForm();
+        });
+    </script>
+</body>
+</html>
