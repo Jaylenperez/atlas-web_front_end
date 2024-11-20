@@ -72,7 +72,7 @@
             const li = $('<li>');
 
             // Add id and title without spans
-            li.append($('<p>').text(`id: ${title}`));
+            li.append($('<p>').html(`id: <strong>${title}</strong>`));
 
             // Remove any HTML tags from the snippet by using .text()
             const plainSnippet = $('<div>').html(snippet).text();
