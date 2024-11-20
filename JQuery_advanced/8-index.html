@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Task 8 - Pagination</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <style>
+        form {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            margin-right: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        #pagination li {
+            display: inline-block;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <script type="application/javascript">
+        function createSearchForm() {
+            const form = $('<form id="search-form">');
+            
+            form.append($('<input>').attr({type: 'text', placeholder: '', style: 'border: 1px solid #D3D3D3;'}));
+            form.append($('<input>').attr({type: 'submit', value: 'Search', style: 'background-color: white; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #D3D3D3; border-radius: 5px;'}));
+            form.append($('<ul>'));
+            form.append($('<ul>').attr('id', 'pagination'));
+            form.on('submit', function(e) {
+                e.preventDefault();
+                const searchQuery = form.find('input[type="text"]').val();
+                if (searchQuery) {
+                    queryWikipedia(searchQuery);
+                } else {
+                    alert('Please enter a search term');
+                }
+            });
+            $('body').prepend(form);
+        }
+
+        function addNewArticle(id, title, snippet) {
+            const li = $('<li>');
+            li.append($('<p>').html(`id: <strong>${title}</strong>`));
+            const plainSnippet = $('<div>').html(snippet).text();
+            li.append($('<p>').text(plainSnippet));
+            $('ul').append(li);
+        }
+
+        function queryWikipedia(search, offset = 0) {
+            const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json&origin=*&sroffset=${offset}&srlimit=10`;
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(response) {
+                    const results = response.query.search;
+                    const totalHits = response.query.searchinfo.totalhits;
+                    $('ul').empty();
+                    results.forEach(function(result) {
+                        const id = result.pageid;
+                        const title = result.title;
+                        const snippet = result.snippet;
+                        addNewArticle(id, title, snippet);
+                    });
+                    buildPagination(totalHits, 10, offset);
+                },
+                error: function() {
+                    alert('Error retrieving data');
+                }
+            });
+        }
+
+        function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+            const pagination = $('#pagination');
+            pagination.empty();
+            const totalPages = Math.ceil(numberOfItems / itemsPerPage);
+            const currentPage = Math.floor(currentOffset / itemsPerPage) + 1;
+
+            // Add maximum of 5 page numbers at a time
+            const maxPagesToShow = 47;
+
+            let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+            let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+            if (endPage - startPage + 1 < maxPagesToShow) {
+                startPage = Math.max(1, endPage - maxPagesToShow + 1);
+            }
+
+            for (let page = startPage; page <= endPage; page++) {
+                const pageItem = $('<li>').text(page).css({
+                    cursor: 'pointer',
+                    marginLeft: '10px',
+                    fontWeight: page === currentPage ? 'bold' : 'normal'
+                });
+                pageItem.on('click', function() {
+                    const newOffset = (page - 1) * itemsPerPage;
+                    queryWikipedia($('#search-form input[type="text"]').val(), newOffset);
+                });
+                pagination.append(pageItem);
+            }
+        }
+
+        $(document).ready(function() {
+            createSearchForm();
+        });
+    </script>
+</body>
+</html>
