@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task 5</title>
+    <!-- Load latest Slim & Minified version of jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
+    <style>
+        /* CSS for the third cell */
+        .remove-btn {
+            background-color: orange;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="application/javascript">
+        // Function to create the family tree table structure
+        function createFamilyTree() {
+            $('body').append(
+                $('<table>').append(
+                    $('<thead>').append(
+                        $('<tr>').append(
+                            $('<th>').text('Firstname'),
+                            $('<th>').text('Lastname')
+                        )
+                    ),
+                    $('<tbody>')
+                )
+            );
+        }
+
+        // Function to add a new member to the family tree
+        function addNewMember(firstName, lastName) {
+            // Create a new row with three cells
+            const row = $('<tr>').append(
+                $('<td>').text(firstName),
+                $('<td>').text(lastName),
+                $('<td>')
+                    .text('(x)')
+                    .addClass('remove-btn') // Add CSS class for styling
+                    .on('click', function () { // Add click event to remove row
+                        $(this).closest('tr').remove();
+                    })
+            );
+
+            // Append the new row to the tbody
+            $('tbody').append(row);
+        }
+
+        // Call the functions
+        createFamilyTree();
+
+        // Add fake data to the table
+        addNewMember('Guillaume', 'Salva');
+        addNewMember('Arielle', 'Snizt');
+        addNewMember('Fanette', 'Snizt');
+        addNewMember('Gerard', 'Snizt');
+        addNewMember('Victor', 'Salva');
+    </script>
+</body>
+
+</html>
