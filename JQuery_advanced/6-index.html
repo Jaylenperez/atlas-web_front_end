@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task 6</title>
+    <!-- Load latest Slim & Minified version of jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
+    <style>
+        /* CSS for the third cell */
+        .remove-btn {
+            background-color: orange;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Basic styling for the form */
+        form {
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="application/javascript">
+        // Function to create the family tree table structure
+        function createFamilyTree() {
+            $('body').append(
+                $('<table>').append(
+                    $('<thead>').append(
+                        $('<tr>').append(
+                            $('<th>').text('Firstname'),
+                            $('<th>').text('Lastname')
+                        )
+                    ),
+                    $('<tbody>')
+                )
+            );
+        }
+
+        // Function to add a new member to the family tree
+        function addNewMember(firstName, lastName, position) {
+            const row = $('<tr>').append(
+                $('<td>').text(firstName),
+                $('<td>').text(lastName),
+                $('<td>')
+                    .text('(x)')
+                    .addClass('remove-btn')
+                    .on('click', function () {
+                        $(this).closest('tr').remove();
+                    })
+            );
+
+            if (position === 'before') {
+                $('tbody').prepend(row); // Add at the top
+            } else {
+                $('tbody').append(row); // Add at the bottom
+            }
+        }
+
+        // Function to create the form
+        function createForm() {
+            const form = $('<form>');
+
+            // Add two input fields for first and last name
+            form.append($('<input>').attr({
+                type: 'text',
+                placeholder: ''
+            }));
+            form.append($('<input>').attr({
+                type: 'text',
+                placeholder: ''
+            }));
+
+            // Add a select dropdown with options "Before" and "After"
+            const select = $('<select>').append(
+                $('<option>').attr('value', 'before').text('Before'),
+                $('<option>').attr('value', 'after').text('After')
+            );
+            form.append(select);
+
+            // Add a submit button
+            form.append($('<button>').attr('type', 'submit').text('Submit'));
+
+            // Add form submission functionality
+            form.on('submit', function (e) {
+                e.preventDefault(); // Prevent form from refreshing the page
+
+                const firstName = form.find('input:nth-of-type(1)').val();
+                const lastName = form.find('input:nth-of-type(2)').val();
+                const position = form.find('select').val();
+
+                if (firstName && lastName) {
+                    addNewMember(firstName, lastName, position);
+                    form.find('input').val(''); // Clear input fields
+                } else {
+                    alert('Please fill out both fields.');
+                }
+            });
+
+            // Add the form before the table
+            $('body').prepend(form);
+        }
+
+        // Call the functions
+        createFamilyTree();
+        createForm();
+
+        // Add fake data to the table
+        addNewMember('Guillaume', 'Salva', 'after');
+        addNewMember('Arielle', 'Snizt', 'after');
+        addNewMember('Fanette', 'Snizt', 'after');
+        addNewMember('Gerard', 'Snizt', 'after');
+        addNewMember('Victor', 'Salva', 'after');
+    </script>
+</body>
+
+</html>
