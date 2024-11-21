@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Task 12 - Delete Query</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+    <script type="application/javascript">
+        // Modify addPostRow to include the delete functionality
+        function addPostRow(data) {
+            const paragraph = $('<p>').attr('id', `row-${data.id}`);  // Add the id attribute
+            const deleteSpan = $('<span>').text('(delete)')  // Create the delete span
+                .on('click', function() { deletePost(data.id) }); // On click, call deletePost function
+
+            const postInfo = $('<span>').text(`Post created with id ${data.id}, title: ${data.title}, author: ${data.author}`);
+            
+            // Append delete span first, followed by the post info
+            paragraph.append(deleteSpan).append(postInfo);
+
+            $('body').append(paragraph);
+        }
+
+        // Function to list posts
+        function listPosts() {
+            const url = 'http://localhost:3000/posts';
+            $.get(url)
+                .done(function(response) {
+                    response.forEach(function(post) {
+                        addPostRow(post);
+                    });
+                })
+                .fail(function() {
+                    alert('Server Error');
+                });
+        }
+
+        // Build the form to add new posts
+        function buildForm() {
+            const formHTML = `
+                <form class="myForm">
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" id="author">
+                    </div>
+                    <div>
+                        <label for="title">Title</label>
+                        <textarea id="title"></textarea>
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>`;
+            $("body").append(formHTML);
+
+            // Handle form submission
+            $(".myForm").on("submit", function (e) {
+                e.preventDefault();
+                sendForm();
+            });
+        }
+
+        // Send the form data via a POST request
+        function sendForm() {
+            $(".myForm").after("<p>About to send the query to the API</p>");
+            let data = {
+                author: $("#author").val(),
+                title: $("#title").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/posts",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    addPostRow(res);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error details:", xhr, status, error);
+                    alert("Error sending the POST query");
+                },
+            });
+        }
+
+        // Function to delete a post
+        function deletePost(id) {
+            const rowId = `#row-${id}`;  // Select the row by its id
+            
+            $.ajax({
+                type: "DELETE",
+                url: `http://localhost:3000/posts/${id}`,
+                success: function () {
+                    // If the DELETE is successful, remove the row from the DOM
+                    $(rowId).remove();
+                },
+                error: function () {
+                    alert("Post was not deleted");
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            listPosts();
+            buildForm();
+        });
+    </script>
+</body>
+</html>
