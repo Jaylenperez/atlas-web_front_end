@@ -28,43 +28,46 @@
         }
 
         function buildForm() {
-          $("body").append(`
-                        <form class="myForm">
-                            <div>
-                                <label for="author">Author</label>
-                                <input type="text" id="author">
-                            </div>
-                            <div>
-                                <label for="title">Title</label>
-                                <input type="textarea" id="title">
-                            </div>
-                            <input class="formBtn" type="submit" value="Submit">
-                        </form>
-                    `);
-          $(".formBtn").click(function (e) {
-            e.preventDefault();
-            sendForm();
-            return false;
-          });
+            const formHTML = `
+                <form class="myForm">
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" id="author">
+                    </div>
+                    <div>
+                        <label for="title">Title</label>
+                        <textarea id="title"></textarea>
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>`;
+            $("body").append(formHTML);
+
+            // Use the form's submit event
+            $(".myForm").on("submit", function (e) {
+                e.preventDefault();
+                sendForm();
+            });
         }
 
         function sendForm() {
-          $(".myForm").append("<p>About to send the query to the API</p>");
-          let data = {
-            author: $("#author").val(),
-            title: $("#title").val(),
-          };
-          $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/posts",
-            data: data,
-            success: function (res) {
-              addPostRow(res);
-            },
-            error: function () {
-              alert("Error sending the POST query");
-            },
-          });
+            $(".myForm").after("<p>About to send the query to the API</p>");
+            let data = {
+                author: $("#author").val(),
+                title: $("#title").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/posts",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    addPostRow(res);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error details:", xhr, status, error);
+                    alert("Error sending the POST query");
+                },
+            });
         }
 
         $(document).ready(function() {
