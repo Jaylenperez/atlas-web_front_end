@@ -28,6 +28,10 @@
         span {
             font-weight: bold;
         }
+
+        .loading {
+            opacity: 0.2;
+        }
     </style>
 </head>
 <body>
@@ -60,7 +64,10 @@
         }
 
         function queryWikipedia(search, offset = 0) {
+            displayLoading(true); // Show loading
+
             const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json&origin=*&sroffset=${offset}&srlimit=10`;
+
             $.ajax({
                 url: url,
                 method: 'GET',
@@ -75,9 +82,11 @@
                         addNewArticle(id, title, snippet);
                     });
                     buildPagination(totalHits, 10, offset);
+                    displayLoading(false); // Hide loading
                 },
                 error: function() {
                     alert('Error retrieving data');
+                    displayLoading(false); // Hide loading
                 }
             });
         }
@@ -109,6 +118,18 @@
                     queryWikipedia($('#search-form input[type="text"]').val(), newOffset);
                 });
                 pagination.append(pageItem);
+            }
+        }
+
+        function displayLoading(loading) {
+            const ul = $('ul').first(); // Select the first <ul> element
+            
+            if (loading) {
+                // wrap the <ul> with a div that has the 'loading' class
+                ul.wrap('<div class="loading"></div>');
+            } else {
+                // unwrap the <ul> from the div
+                ul.unwrap();
             }
         }
 
