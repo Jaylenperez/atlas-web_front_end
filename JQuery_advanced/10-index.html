@@ -17,12 +17,12 @@
         // Function to list posts from the local server
         function listPosts() {
             $.get('http://localhost:3000/posts', function(data) {
-                // When the server returns a successful response, iterate through the posts and call addPostRow for each one
-                data.forEach(post => {
+                // Filter out posts with empty title or author
+                const validPosts = data.filter(post => post.title && post.author);
+                validPosts.forEach(post => {
                     addPostRow(post);
                 });
             }).fail(function() {
-                // If the server is unavailable, display an alert
                 alert('Server Error');
             });
         }
