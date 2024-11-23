@@ -31,7 +31,7 @@ Cookies sent to the server with every HTTP request, depending on their scope and
     - **Differences between Local & Session Storage:**
         - **Cookies:** Sent with HTTP requests, have limited storage capacity (~4KB), and are used for server-side communication.
         - **Web Storage:** Larger storage capacity (~5MB for most browsers), not sent with HTTP requests, and mainly used for client-side data storage.
-- **document.cookie:** Use this, or libraries like js-cookie to create and manage cookies with specific attributes.
+- `document.cookie:` Use this, or libraries like js-cookie to create and manage cookies with specific attributes.
 
 ## :school: <span id="learning objective">Learning Objective</span>
 
