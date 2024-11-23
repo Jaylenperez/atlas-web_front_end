@@ -22,16 +22,30 @@
 
 ## :memo: <span id="key-terms">Key Terms</span>
 *Cookies:* Small text files stored in the user's browser to retain information about the user for web interactions.
-*Key-Value Pair:*  A storage structure where cookies store data as a key (name) and its corresponding value (e.g., user=Jaylen).
-*HTTP Cookies:* Cookies sent to the server with every HTTP request, depending on their scope and attributes.
-*Cookie Settings:* 
-    **Domain:**
-    **Path:**
-    **Secure:**
-    **HttpOnly:**
-    **Expires/Max-Age:**
-*js-cookie:* A JavaScript library that simplifies setting, getting, and manipulating cookies.
-*Local Storage VS Session Storage:* Web storage, like local storage and session storage, is used to store data on the user's browser without sending it to the server, and it has more space for storage. The main difference is that cookies are used for server communication, while web storage is for client-side storage only.
+### HTTP Cookies:
+Cookies sent to the server with every HTTP request, depending on their scope and attributes.
+### Cookie Settings:
+
+- **Domain:** Specifies the domain where the cookie is valid.
+- **Path:** Limits where the cookie is sent (e.g., /app for paths starting with /app).
+- **Secure:** Ensures the cookie is only sent over HTTPS.
+- **HttpOnly:** Restricts the cookie to HTTP requests, preventing access via JavaScript.
+- **Expires/Max-Age:** Defines the cookie's expiration date or lifespan.
+
+### js-cookie:
+A JavaScript library that simplifies setting, getting, and manipulating cookies.
+
+### Web Storage:
+- **Local Storage:**
+    - Long Term Persistence
+    - Capacity (5-10MB)
+    - User preferences, application state, & caching
+- **Session Storage**
+    - Short-term Persistence (Session-based)
+    - Capacity (5MB)
+    - Temporary data, session-based features
+- **Differences between Local & Session Storage:**
+
 ## :school: <span id="learning objective">Learning Objective</span>
 
 By the end of this project, you should be able to:
