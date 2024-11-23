@@ -1,22 +1,22 @@
 # <p align="center">Cookies & Local Storage(Max's Version)</p>
 
-## :bookmark: Table of Contents
+## :cookie: Table of Contents
 <details>
         <summary>
         CLICK TO ENLARGE
         </summary>
-        :memo: <a href="#quick-notes">Quick Notes</a>
+        :bookmark_tabs: <a href="#quick-notes">Quick Notes</a>
         <br>
-        :school: <a href="#learning objective">Learning Objective</a>
+        :dart: <a href="#learning objective">Learning Objective</a>
         <br>
-        :floppy_disk: <a href="#requirements">Requirements</a>
+        :bangbang: <a href="#requirements">Requirements</a>
         <br>
         :camera: <a href="#pictures">Pictures</a>
         <br>
-        :alien: <a href="#authors">Authors</a>
+        :sparkles: <a href="#authors">Authors</a>
 </details>
 
-## :memo: <span id="quick-notes">Quick Notes</span>
+## :bookmark_tabs: <span id="quick-notes">Quick Notes</span>
 - **Cookies:** Small text files stored in the user's browser to retain information about the user for web interactions.
 - **js-cookie:** A JavaScript library that simplifies setting, getting, and manipulating cookies.
 - **HTTP Cookies:**
@@ -33,7 +33,7 @@ Cookies sent to the server with every HTTP request, depending on their scope and
         - **Web Storage:** Larger storage capacity (~5MB for most browsers), not sent with HTTP requests, and mainly used for client-side data storage.
 - `document.cookie:` Use this, or libraries like js-cookie to create and manage cookies with specific attributes.
 
-## :school: <span id="learning objective">Learning Objective</span>
+## :dart: <span id="learning objective">Learning Objective</span>
 
 By the end of this project, you should be able to:
 
@@ -43,7 +43,7 @@ By the end of this project, you should be able to:
 - How to use js-cookie for easy cookie manipulation
 - How to use the browser web storage
 - The differences between local storage and session storage
-## :floppy_disk: <span id="requirements">Requirements</span>
+## :bangbang: <span id="requirements">Requirements</span>
 
 - Allowed editors: vi, vim, emacs, Visual Studio Code
 - All your files should end with a new line
