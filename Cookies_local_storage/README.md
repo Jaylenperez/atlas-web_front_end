@@ -28,8 +28,6 @@ Cookies sent to the server with every HTTP request, depending on their scope and
     - `HttpOnly:` Restricts the cookie to HTTP requests, preventing access via JavaScript
     - `Expires/Max-age:` Defines the cookies expiration date or lifespan.
 - **Web Storage:**
-    - **Local Storage:** A storage system in the browser that persists data across sessions until explicitly cleared. Data stored here is not sent with HTTP requests.
-    - **Session Storage** Similar to local storage, but the data is only available for the duration of the browser tab session. Like local storage, it is not sent with HTTP requests.
     - **Differences between Local & Session Storage:**
         - **Cookies:** Sent with HTTP requests, have limited storage capacity (~4KB), and are used for server-side communication.
         - **Web Storage:** Larger storage capacity (~5MB for most browsers), not sent with HTTP requests, and mainly used for client-side data storage.
