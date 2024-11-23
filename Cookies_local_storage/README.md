@@ -5,7 +5,7 @@
         <summary>
         CLICK TO ENLARGE
         </summary>
-        :memo: <a href="#key-terms">Key Terms</a>
+        :memo: <a href="#quick-notes">Quick Notes</a>
         <br>
         :school: <a href="#learning objective">Learning Objective</a>
         <br>
@@ -16,7 +16,7 @@
         :alien: <a href="#authors">Authors</a>
 </details>
 
-## :memo: <span id="key-terms">Key Terms</span>
+## :memo: <span id="quick-notes">Quick Notes</span>
 - **Cookies:** Small text files stored in the user's browser to retain information about the user for web interactions.
 - **js-cookie:** A JavaScript library that simplifies setting, getting, and manipulating cookies.
 - **HTTP Cookies:**
