@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Task 8 - Pagination</title>
+    <title>Task 9 - Pagination</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <style>
         form {
@@ -53,7 +53,7 @@
 
         function addNewArticle(id, title, snippet) {
             const li = $('<li>');
-            li.append($('<p>').html(`id: <strong>${title}</strong>`));
+            li.append($('<p>').html(`${id}: <strong>${title}</strong>`));
             const plainSnippet = $('<div>').html(snippet).text();
             li.append($('<p>').text(plainSnippet));
             $('ul').append(li);
@@ -88,7 +88,7 @@
             const totalPages = Math.ceil(numberOfItems / itemsPerPage);
             const currentPage = Math.floor(currentOffset / itemsPerPage) + 1;
 
-            // Add maximum of 5 page numbers at a time
+            // Add maximum of 42 page numbers at a time
             const maxPagesToShow = 42;
 
             let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
