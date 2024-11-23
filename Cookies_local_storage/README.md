@@ -21,30 +21,16 @@
 </details>
 
 ## :memo: <span id="key-terms">Key Terms</span>
-*Cookies:* Small text files stored in the user's browser to retain information about the user for web interactions.
-### HTTP Cookies:
+- **Cookies:** Small text files stored in the user's browser to retain information about the user for web interactions.
+- **HTTP Cookies:**
 Cookies sent to the server with every HTTP request, depending on their scope and attributes.
-### Cookie Settings:
+- **Cookie Settings:**
+- **js-cookie:** A JavaScript library that simplifies setting, getting, and manipulating cookies.
 
-- **Domain:** Specifies the domain where the cookie is valid.
-- **Path:** Limits where the cookie is sent (e.g., /app for paths starting with /app).
-- **Secure:** Ensures the cookie is only sent over HTTPS.
-- **HttpOnly:** Restricts the cookie to HTTP requests, preventing access via JavaScript.
-- **Expires/Max-Age:** Defines the cookie's expiration date or lifespan.
-
-### js-cookie:
-A JavaScript library that simplifies setting, getting, and manipulating cookies.
-
-### Web Storage:
-- **Local Storage:**
-    - Long Term Persistence
-    - Capacity (5-10MB)
-    - User preferences, application state, & caching
-- **Session Storage**
-    - Short-term Persistence (Session-based)
-    - Capacity (5MB)
-    - Temporary data, session-based features
-- **Differences between Local & Session Storage:**
+- **Web Storage:**
+    - **Local Storage:**
+    - **Session Storage**
+    - **Differences between Local & Session Storage:**
 
 ## :school: <span id="learning objective">Learning Objective</span>
 
