@@ -11,10 +11,6 @@
         <br>
         :floppy_disk: <a href="#requirements">Requirements</a>
         <br>
-        :wrench: <a href="#installation">Installation</a>
-        <br>
-        :calling: <a href="#usage">Usage</a>
-        <br>
         :camera: <a href="#pictures">Pictures</a>
         <br>
         :alien: <a href="#authors">Authors</a>
@@ -36,22 +32,20 @@ Cookies sent to the server with every HTTP request, depending on their scope and
 
 By the end of this project, you should be able to:
 
-* this
-* this too
-* and this
+- Understand how to create cookies using Javascript
+- Learn how to set specific settings for the cookie
+- Learn how to read cookies with Javascript
+- How to use js-cookie for easy cookie manipulation
+- How to use the browser web storage
+- The differences between local storage and session storage
 ## :floppy_disk: <span id="requirements">Requirements</span>
 
-* This is what im allowed/not allowed to do
-
-## :wrench: <span id="installation">Installation</span>
-
-**How to access the application locally**
-
-(https://jaylenperez.github.io/REPO/FOLDER/FILE.html)
-
-## :calling: <spam id="usage">Usage</span>
-
-**How to use the project with examples**
+- Allowed editors: vi, vim, emacs, Visual Studio Code
+- All your files should end with a new line
+- A README.md file, at the root of the folder of the project, is mandatory
+- Your code should use the js extension
+- All of your code will be compiled/executed on Ubuntu 18.04 using Node 12.x and npm 6.x
+- src/index.js should stay empty - all your Javascript must be in your HTML, inside <script> tag
 
 ## :camera: <span id="photos">Photos</span>
 
