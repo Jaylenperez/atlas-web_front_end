@@ -13,16 +13,71 @@
     </style>
 </head>
 <body>
-    <h1>Login to the website</h1>
+    <!-- Website Login Form -->
     <div>
+        <h1>Login to the website</h1>
         <input type="text" id="firstname" placeholder="Firstname">
         <input type="text" id="email" placeholder="Email">
-        <button id="loginBtn">Log me in</button>
+        <!-- Calls the function setCookies -->
+        <button id="loginBtn" onclick="setCookies()">Log me in</button>
     </div>
-    <h1>Cookies</h1>
+    <!-- Shows the cookies -->
     <div>
-        <button id="showCookiesBtn">Show the cookies</button>
+        <h1>Cookies</h1>
+        <!-- Calls the function showCookies-->
+        <button id="showCookiesBtn" onclick="showCookies()">Show the cookies</button>
     </div>
-    <script src="src/index.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script type="application/javascript">
+        function setCookies() {
+            // Get input values 
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            // Set Cookies
+            document.cookie = `firstname=${firstname}; path=/;`;
+            document.cookie = `email=${email}; path=/;`;
+
+            // Print cookie info
+            return `${firstname} - ${email}`;
+        }
+
+        function showCookies() {
+            // Get all cookies
+            const cookies = document.cookie.split(';')
+            let cookiesContent = 'Cookies:<br>';
+
+            cookies.forEach(cookie => {
+                const trimmedCookie = cookie.trim();
+
+            if (trimmedCookie) {
+                const [name, value] = trimmedCookie.split('=');
+
+                if (name === 'firstname') {
+                    cookiesContent += `<Email: ${value} - Firstname: ${cookie.split('=')[1]}><br>`;
+                } else if (name === 'email') {
+                    cookiesContent += `<Email: ${cookie.split('=')[1]} - Firstname: ${value}><br>`;
+                }
+            }
+        });
+
+        // Calls setCookies() to get any newly set values and adds them to cookiesContent if they exist
+        const enteredValues = setCookies();
+        if (enteredValues) {
+            cookiesContent += `<br><hr><br>${enteredValues}`;
+        }
+
+        // Creates new <p> element, sets its inner HTML to the cookiesContent, and appends it to the document body
+        const p = document.createElement('p');
+        p.innerHTML = cookiesContent;
+        document.body.appendChild(p);
+    }
+
+    // Adding event listeners to buttons
+document.getElementById('loginBtn').addEventListener('click', setCookies);
+document.getElementById('showCookiesBtn').addEventListener('click', showCookies);
+
+    </script>
 </body>
 </html>
