@@ -35,9 +35,9 @@
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
 
-            // Set Cookies
-            document.cookie = `firstname=${firstname}; path=/;`;
-            document.cookie = `email=${email}; path=/;`;
+            // Set Cookies, expire after 10 days
+            document.cookie = `firstname=${firstname}; path=/; max-age=864000`;
+            document.cookie = `email=${email}; path=/; max-age=864000`;
         }
 
         function showCookies() {
