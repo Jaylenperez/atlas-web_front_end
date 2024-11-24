@@ -13,16 +13,48 @@
     </style>
 </head>
 <body>
-    <h1>Login to the website</h1>
+    <!-- Website Login Form -->
     <div>
+        <h1>Login to the website</h1>
         <input type="text" id="firstname" placeholder="Firstname">
         <input type="text" id="email" placeholder="Email">
-        <button id="loginBtn">Log me in</button>
+        <!-- Calls the function setCookies -->
+        <button id="loginBtn" onclick="setCookies()">Log me in</button>
     </div>
-    <h1>Cookies</h1>
+    <!-- Shows the cookies -->
     <div>
-        <button id="showCookiesBtn">Show the cookies</button>
+        <h1>Cookies</h1>
+        <!-- Calls the function showCookies-->
+        <button id="showCookiesBtn" onclick="showCookies()">Show the cookies</button>
     </div>
-    <script src="src/index.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script type="application/javascript">
+        function setCookies() {
+            // Get input values 
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            // Set Cookies
+            document.cookie = `firstname=${firstname}; path=/;`;
+            document.cookie = `email=${email}; path=/;`;
+        }
+
+        function showCookies() {
+            // Create Paragraph element
+            const p = document.createElement("p");
+
+            // Retrieve and Split Cookies
+            const cookies = document.cookie.split(";");
+            const firstName = cookies[0].split("=")[1];
+            const email = cookies[1].split("=")[1];
+
+            // Updates paragraph element to display cookie values
+            p.textContent = `Cookies: ${firstName}, ${email}`;
+
+            // Adds <p> element to end of the <body> tag, making it visible on the page
+            document.body.append(p);
+        }
+    </script>
 </body>
 </html>
