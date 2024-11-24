@@ -20,7 +20,6 @@ function getCookie(name) {
     const cookies = document.cookie.split('; ');
     // iterates through each cookie in cookies array
     for (let i = 0; i < cookies.length; i++) {
-        // removes trailing whitespace from each cookie string
         const cookie = cookies[i].trim();
         // splits cookie into two parts
         const [key, value] = cookie.split('=');
@@ -31,6 +30,68 @@ function getCookie(name) {
     }
     // if the loop completes without finding a matching cookie, this line returns an empty string.
     return '';
+}
+
+function showForm() {
+    const welcomeMessage = document.querySelector('.welcome-message');
+    // Remove existing welcome message if it exists
+    if (welcomeMessage) {
+        welcomeMessage.remove();
+    }
+
+    const formContainer = document.querySelector('#form-container');
+    if (!formContainer) {
+        formContainer = document.createElement('div');
+        formContainer.id = 'form-container';
+        document.body.appendChild(formContainer);
+    }
+
+    formContainer.style.display = 'block';
+    
+    const form = document.querySelector('form');
+    if (!form) {
+        form = document.createElement('form');
+        form.innerHTML = `
+            <h2>Login to the website</h2>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button id="loginBtn">Log me in</button>
+        `;
+        document.body.appendChild(form);
+    }
+}
+
+function hideForm() {
+    const formContainer = document.querySelector('#form-container');
+    if (formContainer) {
+        formContainer.style.display = 'none';
+    }
+
+    const form = document.querySelector('form');
+    if (form) {
+        form.remove();
+    }
+}
+
+function deleteCookiesAndShowForm() {
+    document.cookie = "firstname=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "email=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+    showForm();
+}
+
+function showWelcomeMessageOrForm() {
+    const firstname = getCookie('firstname');
+    const email = getCookie('email');
+
+    if (firstname === '' && email === '') {
+        showForm();
+    } else {
+        document.body.innerHTML = `
+            <h1>Welcome ${firstname} (logout)</h1>
+            <a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px;" onclick="deleteCookiesAndShowForm()">Logout</a>
+        `;
+    }
 }
 
 function showCookies() {
