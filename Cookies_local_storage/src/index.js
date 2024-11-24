@@ -5,7 +5,7 @@ function setCookies() {
 
     // Store the entered values in variables
     const expirationDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
-    const enteredValues = `Name: ${firstname}\nEmail: ${email}`;
+    const enteredValues = `Email: ${email} - Firstname: ${firstname}`;
 
     // Get the value of the input element with id
     document.cookie = `firstname=${firstname}; path=/; expires=${expirationDate.toUTCString()}`;
@@ -23,8 +23,17 @@ function showCookies() {
 
     // Loop through each cookie in the array
     cookies.forEach(cookie => {
-        // Append the cookie string to the content with a line break for display
-        cookiesContent += `${cookie}<br>`;
+        // Remove any leading/trailing whitespace
+        const trimmedCookie = cookie.trim();
+        // Check if the cookie starts with 'Emaill:'
+        if (trimmedCookie.startsWith('Email:')) {
+            // If it does, keep it as is
+            cookiesContent += `${cookie}<br>`;
+        } else {
+            // If not, reverse the order and add hyphen
+            const [email, firstname] = cookie.split(':');
+            cookiesContent += `Email: ${email} - Firstname: ${firstname}<br>`;
+        }
     });
 
     // Add the entered values to the content
