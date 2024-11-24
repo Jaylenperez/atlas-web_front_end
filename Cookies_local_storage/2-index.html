@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Cookie</title>
+    <style>
+        button {
+            background-color: white;
+            border: 1px solid #D3D3D3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Website Login Form -->
+    <div>
+        <h1>Login to the website</h1>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <!-- Calls the function setCookies -->
+        <button id="loginBtn" onclick="setCookies()">Log me in</button>
+    </div>
+    <!-- Shows the cookies -->
+    <div>
+        <h1>Cookies</h1>
+        <!-- Calls the function showCookies-->
+        <button id="showCookiesBtn" onclick="showCookies()">Show the cookies</button>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script type="application/javascript">
+        function setCookies() {
+            // Get input values 
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            // Set the expiry date to 10 days from now
+            const now = new Date();
+            now.setTime(now.getTime() + 10 * 24 * 60 * 60 * 1000);
+            const expires = now.toUTCString();
+
+            // Set both cookies at once
+            document.cookie = `firstname=${encodeURIComponent(firstname)}; path=/; expires=${expires}`;
+            document.cookie = `email=${encodeURIComponent(email)}; path=/; expires=${expires}`;
+        }
+
+        function showCookies() {
+            // Create Paragraph element
+            const p = document.createElement("p");
+
+            // Retrieve and Split Cookies
+            const cookies = document.cookie.split("; ");
+            let firstName = "";
+            let email = "";
+
+            // Loop through cookies to find the ones we want
+            cookies.forEach(cookie => {
+                const [name, value] = cookie.trim().split("=");
+                if (name === "firstname") {
+                    firstName = decodeURIComponent(value);
+                } else if (name === "email") {
+                    email = decodeURIComponent(value);
+                }
+            });
+
+            // Updates paragraph element to display cookie values
+            p.textContent = `Email: ${email} - Firstname: ${firstName}`;
+
+            // Adds <p> element to end of the <body> tag, making it visible on the page
+            document.body.append(p);
+        }
+
+        function getCookie(name) {
+            let cookieValue = '';
+            // If there are no cookies, split them into an array
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                // Loop through cookies to find the one that matches 'name'
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // If the cookie starts with the desired 'name' followed by '=', extract its value
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue; // Return value of the cookie, or any empty string if not found
+        }
+        // Get value of the 'firstname' cookie and log it to the console
+        const firstName = getCookie('firstname');
+        console.log(firstName); // should print the firstname cookie value or an empty string if not set
+
+        // Try to get the value of a non-existent cookie and log it to the console
+        const nonExistentCookie = getCookie('nonexistent');
+        console.log(nonExistentCookie); // should print an empty string since the cookie doesnt exist
+    </script>
+</body>
+</html>
