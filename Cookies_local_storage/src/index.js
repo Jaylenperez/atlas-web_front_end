@@ -1,22 +1,19 @@
-// Function to set cookies
 function setCookies() {
-    // Get value of the input element with id 'firstname'
+    // Get value of the input element with id
     const firstname = document.getElementById('firstname').value;
-    // Get value of the input element with id 'email'
     const email = document.getElementById('email').value;
 
     // Store the entered values in variables
+    const expirationDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
     const enteredValues = `Name: ${firstname}\nEmail: ${email}`;
 
-    // Get the value of the input element with id 'firstname'
-    document.cookie = `firstname=${firstname}; path=/`;
-    // Get the value of the input element with id 'email'
-    document.cookie = `email=${email}; path=/`;
+    // Get the value of the input element with id
+    document.cookie = `firstname=${firstname}; path=/; expires=${expirationDate.toUTCString()}`;
+    document.cookie = `email=${email}; path=/; expires=${expirationDate.toUTCString()}`;
 
     return enteredValues;
 }
 
-// Function to show cookies
 function showCookies() {
     // Get all cookies as a single string, split them into an array by separating at '; '
     const cookies = document.cookie.split('; ');
