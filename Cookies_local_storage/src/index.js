@@ -16,6 +16,23 @@ function setCookies() {
     return `${firstname} - ${email}`;
 }
 
+function getCookie(name) {
+    const cookies = document.cookie.split('; ');
+    // iterates through each cookie in cookies array
+    for (let i = 0; i < cookies.length; i++) {
+        // removes trailing whitespace from each cookie string
+        const cookie = cookies[i].trim();
+        // splits cookie into two parts
+        const [key, value] = cookie.split('=');
+        // checks if key (cookie name) matches the input parameter name. if it does, it immediately returns corresponding value.
+        if (key === name) {
+            return value;
+        }
+    }
+    // if the loop completes without finding a matching cookie, this line returns an empty string.
+    return '';
+}
+
 function showCookies() {
     // Initialize content for displaying cookies
     const cookies = document.cookie.split('; ');
