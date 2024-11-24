@@ -38,46 +38,23 @@
             // Set Cookies
             document.cookie = `firstname=${firstname}; path=/;`;
             document.cookie = `email=${email}; path=/;`;
-
-            // Print cookie info
-            return `${firstname} - ${email}`;
         }
 
         function showCookies() {
-            // Get all cookies
-            const cookies = document.cookie.split('; ');
-            let cookiesContent = 'Cookies:<br>';
+            // Create Paragraph element
+            const p = document.createElement("p");
 
-            cookies.forEach(cookie => {
-                const trimmedCookie = cookie.trim();
+            // Retrieve and Split Cookies
+            const cookies = document.cookie.split(";");
+            const firstName = cookies[0].split("=")[1];
+            const email = cookies[1].split("=")[1];
 
-            if (trimmedCookie) {
-                const [name, value] = trimmedCookie.split('=');
+            // Updates paragraph element to display cookie values
+            p.textContent = `Cookies: ${firstName}, ${email}`;
 
-                if (name === 'firstname') {
-                    cookiesContent += `<Email: ${value} - Firstname: ${cookie.split('=')[1]}><br>`;
-                } else if (name === 'email') {
-                    cookiesContent += `<Email: ${cookie.split('=')[1]} - Firstname: ${value}><br>`;
-                }
-            }
-        });
-
-        // Calls setCookies() to get any newly set values and adds them to cookiesContent if they exist
-        const enteredValues = setCookies();
-        if (enteredValues) {
-            cookiesContent += `<br><hr><br>${enteredValues}`;
+            // Adds <p> element to end of the <body> tag, making it visible on the page
+            document.body.append(p);
         }
-
-        // Creates new <p> element, sets its inner HTML to the cookiesContent, and appends it to the document body
-        const p = document.createElement('p');
-        p.innerHTML = cookiesContent;
-        document.body.appendChild(p);
-    }
-
-    // Adding event listeners to buttons
-    document.getElementById('loginBtn').addEventListener('click', setCookies);
-    document.getElementById('showCookiesBtn').addEventListener('click', showCookies);
-
     </script>
 </body>
 </html>

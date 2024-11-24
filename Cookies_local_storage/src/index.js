@@ -4,9 +4,8 @@ function setCookies() {
     const email = document.getElementById('email').value;
 
     // Creates Date object 10 days from now
-    const daysToMilliseconds = (days) => days * 24 * 60 * 60 * 1000;
-    const expirationDate = new Date(Date.now() + daysToMilliseconds(10));
-
+    now.setTime(now.getTime() + 10 * 24 * 60 * 60 * 1000);
+    const expires = now.toUTCString();
     
     // Set both cookies at once
     document.cookie = `firstname=${firstname}; path=/; expires=${expirationDate.toUTCString()}`;
