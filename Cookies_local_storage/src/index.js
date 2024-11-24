@@ -5,16 +5,22 @@ function setCookies() {
     // Get value of the input element with id 'email'
     const email = document.getElementById('email').value;
 
+    // Store the entered values in variables
+    const enteredValues = `Name: ${firstname}\nEmail: ${email}`;
+
     // Get the value of the input element with id 'firstname'
     document.cookie = `firstname=${firstname}; path=/`;
     // Get the value of the input element with id 'email'
     document.cookie = `email=${email}; path=/`;
+
+    return enteredValues;
 }
 
 // Function to show cookies
 function showCookies() {
     // Get all cookies as a single string, split them into an array by separating at '; '
     const cookies = document.cookie.split('; ');
+
     // Initialize a string to build HTML content displaying all cookies
     let cookiesContent = 'Cookies:<br>';
 
@@ -23,6 +29,12 @@ function showCookies() {
         // Append the cookie string to the content with a line break for display
         cookiesContent += `${cookie}<br>`;
     });
+
+    // Add the entered values to the content
+    const enteredValues = setCookies();
+    if (enteredValues) {
+        cookiesContent += `<br><hr><br>${enteredValues}`;
+    }
 
     // Create new <p> element to hold the cookie display content.
     const p = document.createElement('p');
