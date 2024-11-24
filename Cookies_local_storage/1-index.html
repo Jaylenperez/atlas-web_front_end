@@ -35,9 +35,16 @@
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
 
-            // Set Cookies, expire after 10 days
-            document.cookie = `firstname=${firstname}; path=/; max-age=864000`;
-            document.cookie = `email=${email}; path=/; max-age=864000`;
+            // Set the expiry date to 10 days from now
+            const expiryDate = new Date();
+            expiryDate.setTime(expiryDate.getTime() + (10 * 24 * 60 * 60 * 1000)); // 10 days in milliseconds
+
+            // Format the expiry date for the cookie
+            const expires = "expires=" + expiryDate.toUTCString();
+
+            // Set Cookies with URL encoding and 10-day expiry
+            document.cookie = `firstname=${encodeURIComponent(firstname)}; path=/; ${expires}`;
+            document.cookie = `email=${encodeURIComponent(email)}; path=/; ${expires}`;
         }
 
         function showCookies() {
@@ -46,8 +53,15 @@
 
             // Retrieve and Split Cookies
             const cookies = document.cookie.split(";");
-            const firstName = cookies[0].split("=")[1];
-            const email = cookies[1].split("=")[1];
+            const firstName = "Not set";
+            const email = "Not set";
+
+            // Loop through cookies to find the ones we want
+            cookies.forEach(cookie => {
+                const [name, value] = cookie.split("=");
+                if (name.trim() === "firstname") firstName = decodeURIComponent(value);
+                if (name.trim() === "email") email = decodeURIComponent(value);
+            });
 
             // Updates paragraph element to display cookie values
             p.textContent = `Cookies: ${firstName}, ${email}`;
