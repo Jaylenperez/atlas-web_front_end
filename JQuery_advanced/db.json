@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
       "title": "fd",
       "author": "fffff",
       "id": "2"
@@ -54,6 +49,11 @@
       "id": "c8f9",
       "author": "jaylen",
       "title": "potato"
+    },
+    {
+      "id": "0ef7",
+      "author": "jaylen",
+      "title": "egg"
     }
   ],
   "comments": [

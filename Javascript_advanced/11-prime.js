@@ -21,6 +21,5 @@ setTimeout(() => {
     for (let i = 0; i < 100; i++) {
         countPrimeNumbers();
     }
-    console.timeEnd('Execution time');
 }, 0);
-                                                                                                  
+console.timeEnd('Execution time');                                                                                
