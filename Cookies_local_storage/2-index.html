@@ -45,6 +45,8 @@
             // Set Cookies with expiration and path
             document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expires}; path=/;`;
             document.cookie = `email=${encodeURIComponent(email)}; expires=${expires}; path=/;`;
+
+            alert(`Cookies have been set successfully!`);
         }
 
         function showCookies() {
@@ -55,19 +57,17 @@
             const cookieObj = {};
             cookies.forEach(cookie => {
                 const [key, value] = cookie.split("=");
-                cookieObj[key] = decodeURIComponent(value); // Decode value to handle special characters
+                cookieObj[key.trim()] = decodeURIComponent(value); // Decode value to handle special characters
             });
 
-            // Extract firstname and email values from the object
-            const firstName = cookieObj.firstname || "Not Set";
-            const email = cookieObj.email || "Not Set";
-
-            // Create a <p> element to display the cookies
-            const p = document.createElement("p");
-            p.textContent = `Email: ${email} - Firstname: ${firstName}`;
-
-            // Adds <p> element to end of the <body> tag, making it visible on the page.
-            document.body.append(p);
+            if (cookieObj.firstname && cookieObj.email) {
+                // Display cookie info
+                const p = document.createElement("p");
+                p.textContent = `Firstname: ${cookieObj.firstname} | Email: ${cookieObj.email}`;
+                document.body.appendChild(p);
+            } else {
+                alert("No cookies found!");
+            }
         }
 
         // Accepts name as an argument
