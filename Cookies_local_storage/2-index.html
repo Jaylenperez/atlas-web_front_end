@@ -29,72 +29,63 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script type="application/javascript">
+    <script>
         function setCookies() {
-            // Get input values 
+            // Get input values
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
 
-            // Set the expiry date to 10 days from now
-            const now = new Date();
-            now.setTime(now.getTime() + 10 * 24 * 60 * 60 * 1000);
-            const expires = now.toUTCString();
+            // Calculate expiration date (10 days from now)
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 10); // Add 10 days
 
-            // Set both cookies at once
-            document.cookie = `firstname=${encodeURIComponent(firstname)}; path=/; expires=${expires}`;
-            document.cookie = `email=${encodeURIComponent(email)}; path=/; expires=${expires}`;
+            // Convert expiration date to UTC string
+            const expires = expirationDate.toUTCString();
+
+            // Set Cookies with expiration and path
+            document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expires}; path=/;`;
+            document.cookie = `email=${encodeURIComponent(email)}; expires=${expires}; path=/;`;
         }
 
         function showCookies() {
-            // Create Paragraph element
-            const p = document.createElement("p");
-
-            // Retrieve and Split Cookies
+            // Retrieve cookies as an array of "key=value" strings
             const cookies = document.cookie.split("; ");
-            let firstName = "";
-            let email = "";
 
-            // Loop through cookies to find the ones we want
+            // Create an object to store cookie key-value pairs
+            const cookieObj = {};
             cookies.forEach(cookie => {
-                const [name, value] = cookie.trim().split("=");
-                if (name === "firstname") {
-                    firstName = decodeURIComponent(value);
-                } else if (name === "email") {
-                    email = decodeURIComponent(value);
-                }
+                const [key, value] = cookie.split("=");
+                cookieObj[key] = decodeURIComponent(value); // Decode value to handle special characters
             });
 
-            // Updates paragraph element to display cookie values
+            // Extract firstname and email values from the object
+            const firstName = cookieObj.firstname || "Not Set";
+            const email = cookieObj.email || "Not Set";
+
+            // Create a <p> element to display the cookies
+            const p = document.createElement("p");
             p.textContent = `Email: ${email} - Firstname: ${firstName}`;
 
-            // Adds <p> element to end of the <body> tag, making it visible on the page
+            // Adds <p> element to end of the <body> tag, making it visible on the page.
             document.body.append(p);
         }
 
+        // Accepts name as an argument
         function getCookie(name) {
-            let cookieValue = '';
-            // If there are no cookies, split them into an array
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                // Loop through cookies to find the one that matches 'name'
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    // If the cookie starts with the desired 'name' followed by '=', extract its value
-                    if (cookie.startsWith(name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
+            // Retrieve cookies (split into array of key=value strings)
+            const cookies = document.cookie.split("; ");
+            // search for the cookie (loops through each cookie and splits into key & value. if key matches the name argument, the decoded value is returned)
+            for (let cookie of cookies) {
+                const [key, value] = cookie.split("=");
+                // Returns the value of the cookie with the name passed in argument
+                if (key === name) {
+                    return decodeURIComponent(value);
                 }
             }
-            return cookieValue; // Return value of the cookie, or any empty string if not found
+            // if cookie does not exist, it returns an empty string
+            return "";
         }
-        // Get value of the 'firstname' cookie and log it to the console
-        const firstName = getCookie('firstname');
-        console.log(firstName); // should print the firstname cookie value or an empty string if not set
 
-        // Try to get the value of a non-existent cookie and log it to the console
-        const nonExistentCookie = getCookie('nonexistent');
-        console.log(nonExistentCookie); // should print an empty string since the cookie doesnt exist
     </script>
 </body>
 </html>
