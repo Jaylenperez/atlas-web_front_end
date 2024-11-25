@@ -29,44 +29,44 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script type="application/javascript">
+    <script>
         function setCookies() {
-            // Get input values 
+            // Get input values
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
 
-            // Set the expiry date to 10 days from now
-            const expiryDate = new Date();
-            expiryDate.setTime(expiryDate.getTime() + (10 * 24 * 60 * 60 * 1000)); // 10 days in milliseconds
+            // Calculate expiration date (10 days from now)
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 10); // Add 10 days
 
-            // Format the expiry date for the cookie
-            const expires = "expires=" + expiryDate.toUTCString();
+            // Convert expiration date to UTC string
+            const expires = expirationDate.toUTCString();
 
-            // Set Cookies with URL encoding and 10-day expiry
-            document.cookie = `firstname=${encodeURIComponent(firstname)}; path=/; ${expires}`;
-            document.cookie = `email=${encodeURIComponent(email)}; path=/; ${expires}`;
+            // Set Cookies with expiration and path
+            document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expires}; path=/;`;
+            document.cookie = `email=${encodeURIComponent(email)}; expires=${expires}; path=/;`;
         }
 
         function showCookies() {
-            // Create Paragraph element
-            const p = document.createElement("p");
+            // Retrieve cookies as an array of "key=value" strings
+            const cookies = document.cookie.split("; ");
 
-            // Retrieve and Split Cookies
-            const cookies = document.cookie.split(";");
-            const firstName = "Not set";
-            const email = "Not set";
-
-            // Loop through cookies to find the ones we want
+            // Create an object to store cookie key-value pairs
+            const cookieObj = {};
             cookies.forEach(cookie => {
-                const [name, value] = cookie.split("=");
-                if (name.trim() === "firstname") firstName = decodeURIComponent(value);
-                if (name.trim() === "email") email = decodeURIComponent(value);
+                const [key, value] = cookie.split("=");
+                cookieObj[key] = decodeURIComponent(value); // Decode value to handle special characters
             });
 
-            // Updates paragraph element to display cookie values
-            p.textContent = `Cookies: ${firstName}, ${email}`;
+            // Extract firstname and email values from the object
+            const firstName = cookieObj.firstname || "Not Set";
+            const email = cookieObj.email || "Not Set";
 
-            // Adds <p> element to end of the <body> tag, making it visible on the page
+            // Create a <p> element to display the cookies
+            const p = document.createElement("p");
+            p.textContent = `Cookies: Firstname=${firstName}, Email=${email}`;
+
+            // Adds <p> element to end of the <body> tag, making it visible on the page.
             document.body.append(p);
         }
     </script>
