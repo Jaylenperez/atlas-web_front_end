@@ -29,28 +29,35 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script type="application/javascript">
+    <script>
         function setCookies() {
             // Get input values 
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
 
             // Set Cookies
-            document.cookie = `firstname=${firstname}; path=/;`;
-            document.cookie = `email=${email}; path=/;`;
+            document.cookie = `firstname=${encodeURIComponent(firstname)}; path=/;`;
+            document.cookie = `email=${encodeURIComponent(email)}; path=/;`;
         }
 
         function showCookies() {
-            // Create Paragraph element
+            // Retrieve cookies as an array of "key=value" strings
+            const cookies = document.cookie.split("; ");
+
+            // Create an object to store cookie key-value pairs
+            const cookieObj = {};
+            cookies.forEach(cookie => {
+                const [key, value] = cookie.split("=");
+                cookieObj[key] = decodeURIComponent(value); // Decode value to handle special characters
+            });
+
+            // Extract firstname and email values from the object
+            const firstName = cookieObj.firstname || "Not Set";
+            const email = cookieObj.email || "Not Set";
+
+            // Create a <p> element to display the cookies
             const p = document.createElement("p");
-
-            // Retrieve and Split Cookies
-            const cookies = document.cookie.split(";");
-            const firstName = cookies[0].split("=")[1];
-            const email = cookies[1].split("=")[1];
-
-            // Updates paragraph element to display cookie values
-            p.textContent = `Cookies: ${firstName}, ${email}`;
+            p.textContent = `Cookies: Firstname=${firstName}, Email=${email}`;
 
             // Adds <p> element to end of the <body> tag, making it visible on the page
             document.body.append(p);
