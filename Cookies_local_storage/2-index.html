@@ -45,47 +45,31 @@
             // Set Cookies with expiration and path
             document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expires}; path=/;`;
             document.cookie = `email=${encodeURIComponent(email)}; expires=${expires}; path=/;`;
-
-            alert(`Cookies have been set successfully!`);
         }
 
-        function showCookies() {
-            // Retrieve cookies as an array of "key=value" strings
-            const cookies = document.cookie.split("; ");
-
-            // Create an object to store cookie key-value pairs
-            const cookieObj = {};
-            cookies.forEach(cookie => {
-                const [key, value] = cookie.split("=");
-                cookieObj[key.trim()] = decodeURIComponent(value); // Decode value to handle special characters
-            });
-
-            if (cookieObj.firstname && cookieObj.email) {
-                // Display cookie info
-                const p = document.createElement("p");
-                p.textContent = `Firstname: ${cookieObj.firstname} | Email: ${cookieObj.email}`;
-                document.body.appendChild(p);
-            } else {
-                alert("No cookies found!");
-            }
-        }
-
-        // Accepts name as an argument
         function getCookie(name) {
-            // Retrieve cookies (split into array of key=value strings)
             const cookies = document.cookie.split("; ");
-            // search for the cookie (loops through each cookie and splits into key & value. if key matches the name argument, the decoded value is returned)
+
             for (let cookie of cookies) {
                 const [key, value] = cookie.split("=");
-                // Returns the value of the cookie with the name passed in argument
+
                 if (key === name) {
                     return decodeURIComponent(value);
                 }
             }
-            // if cookie does not exist, it returns an empty string
+
             return "";
         }
 
+        function showCookies() {
+            const firstName = getCookie("firstname");
+            const email = getCookie("email");
+
+            const p = document.createElement("p");
+            p.textContent = `Email: ${email} - Firstname: ${firstName}`;
+
+            document.body.appendChild(p);
+        }
     </script>
 </body>
 </html>
