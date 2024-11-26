@@ -22,77 +22,71 @@
     <!-- JAVASCRIPT -->
     <script>
         function setCookies() {
-            // Get input elements for firstname and email
             const firstnameInput = document.getElementById('firstname');
             const emailInput = document.getElementById('email');
 
-            // Extract trimmed values from inputs
             const firstname = firstnameInput.value.trim();
             const email = emailInput.value.trim();
 
-            // Check if both firstname and email are provided
+            console.log('Attempting to set cookies:', { firstname, email });
+
             if (firstname && email) {
-                // Create exp date 10 days from now
                 const expirationDate = new Date();
                 expirationDate.setDate(expirationDate.getDate() + 10);
 
-                // Set both cookies separately
-                document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
-                document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+                const firstnameCookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
+                const emailCookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
 
-                // Verify cookies have been set
+                console.log('Setting cookies:', {
+                    firstnameCookie,
+                    emailCookie
+                });
+
+                document.cookie = firstnameCookie;
+                document.cookie = emailCookie;
+
+                console.log('Cookies set successfully');
+
                 const storedFirstname = getCookie('firstname');
                 const storedEmail = getCookie('email');
 
+                console.log('Retrieved cookies:', { storedFirstname, storedEmail });
+
+                // checks if storedFirstname is strictly equal to firstname & storedEmail is strictly equal to email. Value and type must match
                 if (storedFirstname === firstname && storedEmail === email) {
-                    console.log('Cookies set successfully:', { firstname: storedFirstname, email: storedEmail });
+                    console.log('Cookies set correctly:', { firstname: storedFirstname, email: storedEmail });
                 } else {
-                    console.error('Failed to set cookies.');
+                    console.error('Failed to set or retrieve cookies correctly');
                 }
             }
         }
 
         function getCookie(name) {
-            // Create string with the cookie name plus an = sign
             const cookieName = `${name}=`;
-
-            // Decode entire cookie string
             const decodedCookie = decodeURIComponent(document.cookie);
-
-            // Split the decoded cookie string into an array of individual cookies
             const cookiesArray = decodedCookie.split(';');
 
-            // Iterate through each cookie in the array
-            for (let i = 0; i < cookiesArray.length; i++) {
-                let cookie = cookiesArray[i].trim();
-
-                // Check if the current cookie starts with the name we're looking for
-                if (cookie.indexOf(cookieName) === 0) {
-                    // If it does, return the value of that cookie
-                    return cookie.substring(cookieName.length, cookie.length);
+            for (let cookie of cookiesArray) {
+                cookie = cookie.trim();
+                if (cookie.startsWith(cookieName)) {
+                    return cookie.substring(cookieName.length);
                 }
             }
-            
-            // If no matching cookie is found, return an empty substring
             return '';
         }
 
         function showCookies() {
-            // Retrieve values of the firstname and email cookies using the getCookie() function.
             const email = getCookie('email');
             const firstname = getCookie('firstname');
 
-            // Creates new paragraph element
-            const p = document.createElement('p')
+            console.log('Showing cookies:', { email, firstname });
 
-            // If both cookies exist, format them
+            const p = document.createElement('p');
             if (email && firstname) {
                 p.textContent = `Email: ${email} - Firstname: ${firstname}`;
             } else {
                 p.textContent = 'No cookies found. Please log in first';
             }
-
-            // append the paragraph to the body
             document.body.appendChild(p);
         }
     </script>
