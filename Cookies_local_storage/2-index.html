@@ -13,67 +13,58 @@
     </style>
 </head>
 <body>
-    <!-- Website Login Form -->
-    <div>
         <h1>Login to the website</h1>
-        <input type="text" id="firstname" placeholder="Firstname" onkeypress="checkEnter(event)"/>
-        <input type="text" id="email" placeholder="Email" onkeypress="checkEnter(event)"/>
-        <!-- Calls the function setCookies -->
+        <input type="text" id="firstname" placeholder="Firstname" />
+        <input type="email" id="email" placeholder="Email" />
         <button onclick="setCookies()">Log me in</button>
-    </div>
-    <!-- Shows the cookies -->
-    <div>
         <h1>Cookies</h1>
-        <!-- Calls the function showCookies-->
         <button onclick="showCookies()">Show the cookies</button>
-    </div>
-
     <!-- JAVASCRIPT -->
     <script>
         function setCookies() {
-            // Find HTML element with the ID firstname & stores it in the firstnameInput variable
+            // select two input elements from the DOM
             const firstnameInput = document.getElementById('firstname');
-            // Find HTML element with the ID email & stores it in the emailInput variable
             const emailInput = document.getElementById('email');
-            // Stores user input in the respected variable (firstname & email)
+
+            // Extracts the values from the input fields
             const firstname = firstnameInput.value.trim();
             const email = emailInput.value.trim();
 
-            // Date object represents the current date & time
+            // Set expiration date for both cookies (10 days)
             const expirationDate = new Date();
-            // Modifies expirationDate to be 10 days from current date
             expirationDate.setDate(expirationDate.getDate() + 10);
 
-            // Create cookie firstname with value stored in the firstname variable
-            document.cookie = `firstname=${firstname}; expires=${expirationDate.toUTCString()}; path=/`;
-            // Create cookie email with the value of the email variable 
-            document.cookie = `email=${email}; expires=${expirationDate.toUTCString()}; path=/`;
+            // Sets two separate cookies 
+            document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
+            document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
         }
 
         function getCookie(name) {
-            // Gets all cookies as single string (document.cookie) and splits them into an array of individual cookies using ; as separator
+            // Splits all cookies into an array
             const cookies = document.cookie.split(';');
-            // Iterate over cookies array using for...of loop
+            // Iterates through each cookie
             for (let cookie of cookies) {
-                // Split each cookie into two parts: cookieName & cookieValue, separated by =
                 const [cookieName, cookieValue] = cookie.trim().split('=');
-                // check if cookieName matches the name passed as a parameter. If it matches, the function returns the decoded cookieValue
-                if (cookieName == name) {
+                if (cookieName === name) {
                     return decodeURIComponent(cookieValue);
                 }
             }
-            // If no matching cookie found, function returns empty string
+            // If no matching cookie is found after iterating through all cookies, empty string is returned
             return '';
         }
 
         function showCookies() {
-            // Retrieve firstname & email cookie value using getCookie function
-            const firstName = getCookie('firstname');
+            // Retrieve values of the firstname and email cookies using the getCookie() function.
             const email = getCookie('email');
+            const firstname = getCookie('firstname');
 
-            // Create new paragraph element
-            const p = document.createElement('p');
-            p.textContent = `Email: ${email} - Firstname: ${firstName}`;
+            // Creates new paragraph element
+            const p = document.createElement('p')
+
+            // set the text content of the paragraph
+            p.textContent = `Email: ${email} - Firstname: ${firstname}`;
+
+            // append the paragraph to the body
             document.body.appendChild(p);
         }
     </script>
