@@ -31,48 +31,50 @@
     <!-- JAVASCRIPT -->
     <script>
         function setCookies() {
-            // Retrieve HTML element with the id of firstname & stores in the variable firstnameInput
+            // Find HTML element with the ID firstname & stores it in the firstnameInput variable
             const firstnameInput = document.getElementById('firstname');
-            // Retrieve HTML element with the id of email and stores it in the variable emailInput
+            // Find HTML element with the ID email & stores it in the emailInput variable
             const emailInput = document.getElementById('email');
-            // Extracts current value from the firstname input field and stores it in the variable firstname
-            const firstname = firstnameInput.value;
-            // Extracts current value from the email input field and stores it in the variable email
-            const email = emailInput.value;
+            // Stores user input in the respected variable (firstname & email)
+            const firstname = firstnameInput.value.trim();
+            const email = emailInput.value.trim();
 
-            // Calculate expiration date (10 days from now)
+            // Date object represents the current date & time
             const expirationDate = new Date();
+            // Modifies expirationDate to be 10 days from current date
             expirationDate.setDate(expirationDate.getDate() + 10);
 
+            // Create cookie firstname with value stored in the firstname variable
             document.cookie = `firstname=${firstname}; expires=${expirationDate.toUTCString()}; path=/`;
-            document.cookie = `email=${email}; expires=${expirationDate.toUTCString()} path=/`;
-            firstnameInput.value = '';
-            emailInput.value = '';
+            // Create cookie email with the value of the email variable 
+            document.cookie = `email=${email}; expires=${expirationDate.toUTCString()}; path=/`;
         }
 
         function getCookie(name) {
+            // Gets all cookies as single string (document.cookie) and splits them into an array of individual cookies using ; as separator
             const cookies = document.cookie.split(';');
-
+            // Iterate over cookies array using for...of loop
             for (let cookie of cookies) {
-                const [cookieName, val] = cookie.trim().split('=');
+                // Split each cookie into two parts: cookieName & cookieValue, separated by =
+                const [cookieName, cookieValue] = cookie.trim().split('=');
+                // check if cookieName matches the name passed as a parameter. If it matches, the function returns the decoded cookieValue
                 if (cookieName == name) {
-                    return val;
+                    return decodeURIComponent(cookieValue);
                 }
             }
+            // If no matching cookie found, function returns empty string
             return '';
         }
 
         function showCookies() {
+            // Retrieve firstname & email cookie value using getCookie function
             const firstName = getCookie('firstname');
             const email = getCookie('email');
+
+            // Create new paragraph element
             const p = document.createElement('p');
             p.textContent = `Email: ${email} - Firstname: ${firstName}`;
             document.body.appendChild(p);
-        }
-        function checkEnter(event) {
-            if (event.key === 'Enter') {
-                setCookies();
-            }
         }
     </script>
 </body>
