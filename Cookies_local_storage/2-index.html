@@ -45,19 +45,8 @@
                 document.cookie = firstnameCookie;
                 document.cookie = emailCookie;
 
-                console.log('Cookies set successfully');
+                console.log('Retrieved cookies:', { email, firstname });
 
-                const storedFirstname = getCookie('firstname');
-                const storedEmail = getCookie('email');
-
-                console.log('Retrieved cookies:', { storedFirstname, storedEmail });
-
-                // checks if storedFirstname is strictly equal to firstname & storedEmail is strictly equal to email. Value and type must match
-                if (storedFirstname === firstname && storedEmail === email) {
-                    console.log('Cookies set correctly:', { firstname: storedFirstname, email: storedEmail });
-                } else {
-                    console.error('Failed to set or retrieve cookies correctly');
-                }
             }
         }
 
@@ -82,11 +71,7 @@
             console.log('Showing cookies:', { email, firstname });
 
             const p = document.createElement('p');
-            if (email && firstname) {
-                p.textContent = `Email: ${email} - Firstname: ${firstname}`;
-            } else {
-                p.textContent = 'No cookies found. Please log in first';
-            }
+            p.textContent = `Email: ${email} - Firstname: ${firstname}`;
             document.body.appendChild(p);
         }
     </script>
