@@ -31,9 +31,13 @@
     <!-- JAVASCRIPT -->
     <script>
         function setCookies() {
+            // Retrieve HTML element with the id of firstname & stores in the variable firstnameInput
             const firstnameInput = document.getElementById('firstname');
+            // Retrieve HTML element with the id of email and stores it in the variable emailInput
             const emailInput = document.getElementById('email');
+            // Extracts current value from the firstname input field and stores it in the variable firstname
             const firstname = firstnameInput.value;
+            // Extracts current value from the email input field and stores it in the variable email
             const email = emailInput.value;
 
             // Calculate expiration date (10 days from now)
