@@ -15,15 +15,81 @@
 <body>
         <div id="login-form">
             <h2>Login to the website</h2>
-            <input type="text" id="firstname" placeholder="Firstname" />
-            <input type="text" id="email" placeholder="Email" />
+            <input type="text" id="firstname" placeholder="Firstname" autocomplete="given-name" />
+            <input type="text" id="email" placeholder="Email" autocomplete="email"/>
             <button onclick="setCookies()">Log me in</button>
         </div>
-        
-        <h1>Cookies</h1>
-        <button onclick="showCookies()">Show the cookies</button>
+        <div id="cookie-body">
+            <h1>Cookies</h1>
+            <button onclick="showCookies()">Show the cookies</button>
+        </div>
     <!-- JAVASCRIPT -->
     <script>
+        function showForm() {
+            // Removes welcome message if it exists
+            const welcomeMessage = document.getElementById('welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+
+            // Shows the login form
+            document.getElementById('login-form').style.display = 'block'
+        }
+
+        function hideForm() {
+            // selects the login form from the DOM. Login form assigned to the loginForm variable
+            const loginForm = document.getElementById('login-form');
+
+            // Hides the form
+            loginForm.style.display = 'none';
+        }
+
+        function deleteCookiesAndShowForm() {
+            // deleting cookie by using past exp date
+            document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+            // show the login form
+            showForm();
+        }
+
+        function showWelcomeMessageOrForm() {
+            // if user is logged in replace body of the page with an h1
+            const cookieString = document.cookie;
+            const cookies = cookieString.split(';');
+
+            let firstname = '';
+            let email = '';
+
+            // Check if both 'firstname' and 'email' cookies exist
+            const hasCookies = cookies.some(cookie => {
+                const [name] = cookie.trim().split('=');
+                return name === 'firstname' || name === 'email';
+            });
+
+            if (hasCookies) {
+                // extract firstname from cookie
+                const cookie = cookies.find(cookie => cookie.trim().startsWith('firstname='));
+                if (cookie) {
+                    [firstname] = cookie.split('=')[1].split(';').map(v => trim());
+                }
+
+                // Extract email from cookie
+                const emailCookie = cookies.find(cookie => cookie.trim().startsWith('email='));
+                if (emailCookie) {
+                    [email] = emailCookie.split('=')[1].split(';').map(v => v.trim());
+                }
+
+                // Display welcome message with firstname
+                document.body.innerHTML = `
+                    <h1>Welcome ${firstname}!</h1>
+                    <a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px;" onclick="deleteCookiesAndShowForm()">Logout</a>
+                `;
+            } else {
+                showForm();
+            }
+        }
+
         function setCookies() {
             const firstnameInput = document.getElementById('firstname');
             const emailInput = document.getElementById('email');
