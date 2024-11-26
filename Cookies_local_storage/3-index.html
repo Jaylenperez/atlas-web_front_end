@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Cookie</title>
+    <style>
+        button {
+            background-color: white;
+            border: 1px solid #D3D3D3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+        <div id="login-form">
+            <h2>Login to the website</h2>
+            <input type="text" id="firstname" placeholder="Firstname" />
+            <input type="text" id="email" placeholder="Email" />
+            <button onclick="setCookies()">Log me in</button>
+        </div>
+        
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+    <!-- JAVASCRIPT -->
+    <script>
+        function setCookies() {
+            const firstnameInput = document.getElementById('firstname');
+            const emailInput = document.getElementById('email');
+
+            const firstname = firstnameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            console.log('Attempting to set cookies:', { firstname, email });
+
+            if (firstname && email) {
+                const expirationDate = new Date();
+                expirationDate.setDate(expirationDate.getDate() + 10);
+
+                document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
+                document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+
+                console.log('Cookies set successfully');
+            }
+        }
+
+        function getCookie(name) {
+            const cookieName = `${name}=`;
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const cookiesArray = decodedCookie.split(';');
+
+            for (let cookie of cookiesArray) {
+                cookie = cookie.trim();
+                if (cookie.startsWith(cookieName)) {
+                    return cookie;
+                }
+            }
+            return '';
+        }
+
+        function showCookies() {
+            console.log('Showing cookies:', { email, firstname });
+            let cookieString = document.cookie;
+            console.log(cookieString);
+
+            let p = document.createElement('p');
+            p.textContent = `Email: ${email.value} - Firstname: ${firstname.value}`;
+            document.body.appendChild(p);
+        }
+    </script>
+</body>
+</html>
