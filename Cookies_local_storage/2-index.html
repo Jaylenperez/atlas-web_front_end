@@ -34,19 +34,10 @@
                 const expirationDate = new Date();
                 expirationDate.setDate(expirationDate.getDate() + 10);
 
-                const firstnameCookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
-                const emailCookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+                document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
+                document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
 
-                console.log('Setting cookies:', {
-                    firstnameCookie,
-                    emailCookie
-                });
-
-                document.cookie = firstnameCookie;
-                document.cookie = emailCookie;
-
-                console.log('Retrieved cookies:', { email, firstname });
-
+                console.log('Cookies set successfully');
             }
         }
 
@@ -65,13 +56,12 @@
         }
 
         function showCookies() {
-            const emailCookie = getCookie('email');
-            const firstnameCookie = getCookie('firstname');
-
-            console.log('Showing cookies:', { emailCookie, firstnameCookie });
+            console.log('Showing cookies:', { email, firstname });
+            let cookieString = document.cookie;
+            console.log(cookieString);
 
             let p = document.createElement('p');
-            p.textContent = `Email: ${emailCookie.split('=')[1]} - Firstname: ${firstnameCookie.split('=')[1]}`;
+            p.textContent = `Email: ${email.value} - Firstname: ${firstname.value}`;
             document.body.appendChild(p);
         }
     </script>
