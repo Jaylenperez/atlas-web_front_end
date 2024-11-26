@@ -22,34 +22,58 @@
     <!-- JAVASCRIPT -->
     <script>
         function setCookies() {
-            // select two input elements from the DOM
+            // Get input elements for firstname and email
             const firstnameInput = document.getElementById('firstname');
             const emailInput = document.getElementById('email');
 
-            // Extracts the values from the input fields
+            // Extract trimmed values from inputs
             const firstname = firstnameInput.value.trim();
             const email = emailInput.value.trim();
 
-            // Set expiration date for both cookies (10 days)
-            const expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + 10);
+            // Check if both firstname and email are provided
+            if (firstname && email) {
+                // Create exp date 10 days from now
+                const expirationDate = new Date();
+                expirationDate.setDate(expirationDate.getDate() + 10);
 
-            // Sets two separate cookies 
-            document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
-            document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+                // Set both cookies separately
+                document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
+                document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+
+                // Verify cookies have been set
+                const storedFirstname = getCookie('firstname');
+                const storedEmail = getCookie('email');
+
+                if (storedFirstname === firstname && storedEmail === email) {
+                    console.log('Cookies set successfully:', { firstname: storedFirstname, email: storedEmail });
+                } else {
+                    console.error('Failed to set cookies.');
+                }
+            }
         }
 
         function getCookie(name) {
-            // Splits all cookies into an array
-            const cookies = document.cookie.split(';');
-            // Iterates through each cookie
-            for (let cookie of cookies) {
-                const [cookieName, cookieValue] = cookie.trim().split('=');
-                if (cookieName === name) {
-                    return decodeURIComponent(cookieValue);
+            // Create string with the cookie name plus an = sign
+            const cookieName = `${name}=`;
+
+            // Decode entire cookie string
+            const decodedCookie = decodeURIComponent(document.cookie);
+
+            // Split the decoded cookie string into an array of individual cookies
+            const cookiesArray = decodedCookie.split(';');
+
+            // Iterate through each cookie in the array
+            for (let i = 0; i < cookiesArray.length; i++) {
+                let cookie = cookiesArray[i].trim();
+
+                // Check if the current cookie starts with the name we're looking for
+                if (cookie.indexOf(cookieName) === 0) {
+                    // If it does, return the value of that cookie
+                    return cookie.substring(cookieName.length, cookie.length);
                 }
             }
-            // If no matching cookie is found after iterating through all cookies, empty string is returned
+            
+            // If no matching cookie is found, return an empty substring
             return '';
         }
 
@@ -61,8 +85,12 @@
             // Creates new paragraph element
             const p = document.createElement('p')
 
-            // set the text content of the paragraph
-            p.textContent = `Email: ${email} - Firstname: ${firstname}`;
+            // If both cookies exist, format them
+            if (email && firstname) {
+                p.textContent = `Email: ${email} - Firstname: ${firstname}`;
+            } else {
+                p.textContent = 'No cookies found. Please log in first';
+            }
 
             // append the paragraph to the body
             document.body.appendChild(p);
