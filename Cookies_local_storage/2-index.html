@@ -16,59 +16,59 @@
     <!-- Website Login Form -->
     <div>
         <h1>Login to the website</h1>
-        <input type="text" id="firstname" placeholder="Firstname">
-        <input type="text" id="email" placeholder="Email">
+        <input type="text" id="firstname" placeholder="Firstname" onkeypress="checkEnter(event)"/>
+        <input type="text" id="email" placeholder="Email" onkeypress="checkEnter(event)"/>
         <!-- Calls the function setCookies -->
-        <button id="loginBtn" onclick="setCookies()">Log me in</button>
+        <button onclick="setCookies()">Log me in</button>
     </div>
     <!-- Shows the cookies -->
     <div>
         <h1>Cookies</h1>
         <!-- Calls the function showCookies-->
-        <button id="showCookiesBtn" onclick="showCookies()">Show the cookies</button>
+        <button onclick="showCookies()">Show the cookies</button>
     </div>
 
     <!-- JAVASCRIPT -->
     <script>
         function setCookies() {
-            // Get input values
-            const firstname = document.getElementById('firstname').value;
-            const email = document.getElementById('email').value;
+            const firstnameInput = document.getElementById('firstname');
+            const emailInput = document.getElementById('email');
+            const firstname = firstnameInput.value;
+            const email = emailInput.value;
 
             // Calculate expiration date (10 days from now)
             const expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + 10); // Add 10 days
+            expirationDate.setDate(expirationDate.getDate() + 10);
 
-            // Convert expiration date to UTC string
-            const expires = expirationDate.toUTCString();
-
-            // Set Cookies with expiration and path
-            document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expires}; path=/;`;
-            document.cookie = `email=${encodeURIComponent(email)}; expires=${expires}; path=/;`;
+            document.cookie = `firstname=${firstname}; expires=${expirationDate.toUTCString()}; path=/`;
+            document.cookie = `email=${email}; expires=${expirationDate.toUTCString()} path=/`;
+            firstnameInput.value = '';
+            emailInput.value = '';
         }
 
         function getCookie(name) {
-            const cookies = document.cookie.split("; ");
+            const cookies = document.cookie.split(';');
 
             for (let cookie of cookies) {
-                const [key, value] = cookie.split("=");
-
-                if (key === name) {
-                    return decodeURIComponent(value);
+                const [cookieName, val] = cookie.trim().split('=');
+                if (cookieName == name) {
+                    return val;
                 }
             }
-
-            return "";
+            return '';
         }
 
         function showCookies() {
-            const firstName = getCookie("firstname");
-            const email = getCookie("email");
-
-            const p = document.createElement("p");
+            const firstName = getCookie('firstname');
+            const email = getCookie('email');
+            const p = document.createElement('p');
             p.textContent = `Email: ${email} - Firstname: ${firstName}`;
-
             document.body.appendChild(p);
+        }
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                setCookies();
+            }
         }
     </script>
 </body>
