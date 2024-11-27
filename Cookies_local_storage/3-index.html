@@ -26,71 +26,58 @@
     <!-- JAVASCRIPT -->
     <script>
         function showForm() {
-            // Removes welcome message if it exists
+            // Get welcome message element if it exists
             const welcomeMessage = document.getElementById('welcome-message');
             if (welcomeMessage) {
+                // Remove welcome message element if its present
                 welcomeMessage.remove();
             }
 
-            // Shows the login form
+            // display the login form
             document.getElementById('login-form').style.display = 'block'
         }
 
         function hideForm() {
-            // selects the login form from the DOM. Login form assigned to the loginForm variable
+            // Get the login form element
             const loginForm = document.getElementById('login-form');
 
-            // Hides the form
+            // Hide the login form
             loginForm.style.display = 'none';
         }
 
         function deleteCookiesAndShowForm() {
-            // deleting cookie by using past exp date
+            // Delete firstname & cookie cookie by setting its expiration date to the past
             document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
             document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
-            // show the login form
+            // Show the login form again after deleting cookies
             showForm();
         }
 
         function showWelcomeMessageOrForm() {
-            // if user is logged in replace body of the page with an h1
-            const cookieString = document.cookie;
-            const cookies = cookieString.split(';');
+            // check if the firstname cookie exists
+            const firstname = getCookie("firstname");
+            const email = getCookie("email");
 
-            let firstname = '';
-            let email = '';
-
-            // Check if both 'firstname' and 'email' cookies exist
-            const hasCookies = cookies.some(cookie => {
-                const [name] = cookie.trim().split('=');
-                return name === 'firstname' || name === 'email';
-            });
-
-            if (hasCookies) {
-                // extract firstname from cookie
-                const cookie = cookies.find(cookie => cookie.trim().startsWith('firstname='));
-                if (cookie) {
-                    [firstname] = cookie.split('=')[1].split(';').map(v => trim());
-                }
-
-                // Extract email from cookie
-                const emailCookie = cookies.find(cookie => cookie.trim().startsWith('email='));
-                if (emailCookie) {
-                    [email] = emailCookie.split('=')[1].split(';').map(v => v.trim());
-                }
-
-                // Display welcome message with firstname
-                document.body.innerHTML = `
-                    <h1>Welcome ${firstname}!</h1>
-                    <a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px;" onclick="deleteCookiesAndShowForm()">Logout</a>
-                `;
-            } else {
+            if (!firstname || !email) {
+                // If user is not logged in
                 showForm();
+            } else {
+                const welcomeMessage = document.createElement('h1');
+                welcomeMessage.id = 'welcomeMessage';
+                welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" onclick=deleteCookiesAndShowForm()">logout</a>`;
+
+                // apply styles
+                logoutLink.style.color = 'pointer';
+
+                // replace body content with welcome message
+                document.body.innerHTML = '';
+                document.body.appendChild(welcomeMessage);
             }
         }
 
         function setCookies() {
+            // Get the values from the firstname and email input fields
             const firstnameInput = document.getElementById('firstname');
             const emailInput = document.getElementById('email');
 
@@ -100,9 +87,11 @@
             console.log('Attempting to set cookies:', { firstname, email });
 
             if (firstname && email) {
+                // Create new date for 10 days in the future
                 const expirationDate = new Date();
                 expirationDate.setDate(expirationDate.getDate() + 10);
 
+                // Set the individual cookies with 10 day exp date
                 document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
                 document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
 
@@ -111,28 +100,41 @@
         }
 
         function getCookie(name) {
+            // Build search key for the cookie
             const cookieName = `${name}=`;
+
+            // Decode the cookie string to handle special characters
             const decodedCookie = decodeURIComponent(document.cookie);
+
+            // Split cookie string into individual cookies
             const cookiesArray = decodedCookie.split(';');
 
+            // Iterate over cookies and find one that matches the specified name
             for (let cookie of cookiesArray) {
                 cookie = cookie.trim();
                 if (cookie.startsWith(cookieName)) {
-                    return cookie;
+                    return cookie; // return the matched cookie value
                 }
             }
-            return '';
+            return ''; // return an empty string if no match is found
         }
 
         function showCookies() {
             console.log('Showing cookies:', { email, firstname });
+
+            // log the entire cookie string to the console
             let cookieString = document.cookie;
             console.log(cookieString);
 
+            // Create paragraph element to display cookie info
             let p = document.createElement('p');
             p.textContent = `Email: ${email.value} - Firstname: ${firstname.value}`;
+
+            // append paragraph to the body
             document.body.appendChild(p);
         }
+
+        showWelcomeMessageOrForm(); // call function when the page loads
     </script>
 </body>
 </html>
