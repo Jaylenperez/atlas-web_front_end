@@ -106,6 +106,8 @@
                 document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
 
                 console.log('Cookies set successfully');
+
+                showWelcomeMessageOrForm();
             }
         }
 
@@ -143,8 +145,6 @@
             // append paragraph to the body
             document.body.appendChild(p);
         }
-
-        showWelcomeMessageOrForm(); // call function when the page loads
     </script>
 </body>
 </html>
