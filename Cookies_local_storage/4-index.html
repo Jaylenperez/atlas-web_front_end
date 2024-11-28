@@ -106,6 +106,20 @@
             }
         }
 
+        function setCookiesAndShowWelcomeMessage(firstname, email) {
+
+            var expires = new Date();
+            expires.setDate(expires.getDate() + 10);
+
+            Cookies.set('firstname', firstname, { expires: expires });
+            Cookies.set('email', email, { expires: expires });
+
+            console.log('Cookie set with expiration date:');
+            console.log(`firstname cookie expires on: ${new Date(Cookies.get('firstname').expires).toLocaleString()}`);
+            console.log(`email cookie expires on: ${new Date(Cookies.get('email').expires).toLocaleString()}`);
+            //showWelcomeMessageOrForm();
+        }
+
         function setCookies() {
             // Get the values from the firstname and email input fields
             const firstnameInput = document.getElementById('firstname');
@@ -117,13 +131,7 @@
             console.log('Attempting to set cookies:', { firstname, email });
 
             if (firstname && email) {
-                // Create new date for 10 days in the future
-                const expirationDate = new Date();
-                expirationDate.setDate(expirationDate.getDate() + 10);
-
-                // Set the individual cookies with 10 day exp date
-                document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
-                document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+                setCookiesAndShowWelcomeMessage(firstname, email);
 
                 console.log('Cookies set successfully');
 
