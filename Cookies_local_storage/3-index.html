@@ -55,11 +55,18 @@
             // Delete firstname & cookie cookie by setting its expiration date to the past
             document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
             document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-            console.log("Cookies deleted successfully")
+
+
+            console.log("Cookies deleted successfully");
+
+            // Hide the welcome message
+            const welcomeMessage = document.getElementById('welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
 
             // Show the login form again after deleting cookies
             showForm();
-            console.log('Logout link clicked')
             console.log('form is shown after link clicked')
 
         }
@@ -76,7 +83,7 @@
             } else {
                 // If cookies exist, create a welcome message
                 const welcomeMessage = document.createElement('h1');
-                welcomeMessage.id = 'welcomeMessage';
+                welcomeMessage.id = 'welcome-message';
 
                 // Set the content of the welcome message
                 welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" id="logout" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
