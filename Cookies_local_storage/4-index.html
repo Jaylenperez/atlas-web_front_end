@@ -51,10 +51,9 @@
         }
 
         function deleteCookiesAndShowForm() {
-            // Delete firstname & cookie cookie by setting its expiration date to the past
-            document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-
+            // Now this uses js-cookie remove function
+            Cookies.remove('firstname', { path: '/' });
+            Cookies.remove('email', { path: '/' });
 
             console.log("Cookies deleted successfully");
 
