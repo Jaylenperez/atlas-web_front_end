@@ -31,8 +31,16 @@
                 welcomeMessage.remove();
             }
 
-            // display the login form
-            document.getElementById('login-form').style.display = 'block'
+            // Get login form element
+            const loginForm = document.getElementById('login-form');
+
+            // Check if login form exists before trying to modify its style
+            if (loginForm) {
+                // display the login form
+                loginForm.style.display = 'block';
+            } else {
+                console.error('Login form element not found');
+            }
         }
 
         function hideForm() {
@@ -47,9 +55,13 @@
             // Delete firstname & cookie cookie by setting its expiration date to the past
             document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
             document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            console.log("Cookies deleted successfully")
 
             // Show the login form again after deleting cookies
             showForm();
+            console.log('Logout link clicked')
+            console.log('form is shown after link clicked')
+
         }
 
         function showWelcomeMessageOrForm() {
@@ -67,15 +79,18 @@
                 welcomeMessage.id = 'welcomeMessage';
 
                 // Set the content of the welcome message
-                welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" id="logout" onclick="deleteCookiesAndShowForm()">logout</a>`;
-
-                // Clear the body content
-                document.body.innerHTML = '';
+                welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" id="logout" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
 
                 // Append the welcome message to the body
                 document.body.appendChild(welcomeMessage);
 
                 const logoutLink = document.getElementById('logout');
+                //logoutLink.addEventListener('click', deleteCookiesAndShowForm);
+
+                const loginForm = document.getElementById('login-form');
+                if (loginForm) {
+                    loginForm.style.display = 'none';
+                }
 
                 // logout link styles
                 logoutLink.style.color = 'pointer';
