@@ -55,25 +55,30 @@
         }
 
         function showWelcomeMessageOrForm() {
-            // check if the firstname cookie exists
-            // !! I changed this !!
+            // Get elements by ID
             const logoutLink = document.getElementById('logout');
             const firstname = getCookie("firstname");
             const email = getCookie("email");
 
+            // Check if cookies exist
             if (!firstname || !email) {
-                // If user is not logged in
+                // If they do not exist, show the login form
                 showForm();
             } else {
+                // If cookies exist, create a welcome message
                 const welcomeMessage = document.createElement('h1');
                 welcomeMessage.id = 'welcomeMessage';
-                welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" onclick=deleteCookiesAndShowForm()">logout</a>`;
 
-                // apply styles
+                // Set the content of the welcome message
+                welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" id="logout" onclick="deleteCookiesAndShowForm()">logout</a>`;
+
+                // Set the color of the logout link
                 logoutLink.style.color = 'pointer';
 
-                // replace body content with welcome message
+                // Clear the body content
                 document.body.innerHTML = '';
+
+                // Append the welcome message to the body
                 document.body.appendChild(welcomeMessage);
             }
         }
