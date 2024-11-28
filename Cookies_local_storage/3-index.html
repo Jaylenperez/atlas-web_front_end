@@ -145,7 +145,7 @@
             for (let cookie of cookiesArray) {
                 cookie = cookie.trim();
                 if (cookie.startsWith(cookieName)) {
-                    return cookie; // return the matched cookie value
+                    return cookie.substring(cookieName.length); // return the matched cookie value
                 }
             }
             return ''; // return an empty string if no match is found
