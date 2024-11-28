@@ -23,14 +23,19 @@
     <!-- JAVASCRIPT -->
     <script>
         function showForm() {
+            // Get welcome message element if it exists
             const welcomeMessage = document.getElementById('welcome-message');
             if (welcomeMessage) {
+                // Remove welcome message element if its present
                 welcomeMessage.remove();
             }
 
+            // Get login form element
             const loginForm = document.getElementById('login-form');
 
+            // Check if login form exists before trying to modify its style
             if (loginForm) {
+                // display the login form
                 loginForm.style.display = 'block';
             } else {
                 console.error('Login form element not found');
@@ -38,46 +43,62 @@
         }
 
         function hideForm() {
+            // Get the login form element
             const loginForm = document.getElementById('login-form');
 
+            // Hide the login form
             loginForm.style.display = 'none';
         }
 
         function deleteCookiesAndShowForm() {
+            // Delete firstname & cookie cookie by setting its expiration date to the past
             document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
             document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
+
             console.log("Cookies deleted successfully");
 
+            // Hide the welcome message
             const welcomeMessage = document.getElementById('welcome-message');
             if (welcomeMessage) {
                 welcomeMessage.remove();
             }
 
+            // Show the login form again after deleting cookies
             showForm();
             console.log('form is shown after link clicked')
+
         }
 
         function showWelcomeMessageOrForm() {
+            // Get elements by ID
             const firstname = getCookie("firstname");
             const email = getCookie("email");
 
+            // Check if cookies exist
             if (!firstname || !email) {
+                // If they do not exist, show the login form
                 showForm();
             } else {
+                // If cookies exist, create a welcome message
                 const welcomeMessage = document.createElement('h1');
                 welcomeMessage.id = 'welcome-message';
 
+                // Set the content of the welcome message
                 welcomeMessage.innerHTML = `Welcome: ${firstname} <a href="#" id="logout" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
 
+                // Append the welcome message to the body
                 document.body.appendChild(welcomeMessage);
 
                 const logoutLink = document.getElementById('logout');
+                //logoutLink.addEventListener('click', deleteCookiesAndShowForm);
+
                 const loginForm = document.getElementById('login-form');
                 if (loginForm) {
                     loginForm.style.display = 'none';
                 }
 
+                // logout link styles
                 logoutLink.style.color = 'black';
                 logoutLink.style.fontStyle = 'italic';
                 logoutLink.style.fontWeight = 'normal';
@@ -87,6 +108,7 @@
         }
 
         function setCookies() {
+            // Get the values from the firstname and email input fields
             const firstnameInput = document.getElementById('firstname');
             const emailInput = document.getElementById('email');
 
@@ -96,11 +118,14 @@
             console.log('Attempting to set cookies:', { firstname, email });
 
             if (firstname && email) {
+                // Create new date for 10 days in the future
                 const expirationDate = new Date();
                 expirationDate.setDate(expirationDate.getDate() + 10);
 
+                // Set the individual cookies with 10 day exp date
                 document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
                 document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
+
                 console.log('Cookies set successfully');
 
                 showWelcomeMessageOrForm();
@@ -108,28 +133,22 @@
         }
 
         function getCookie(name) {
-            const cookieName = `${name}=`;
-            const decodedCookie = decodeURIComponent(document.cookie);
-            const cookiesArray = decodedCookie.split(';');
-
-            for (let cookie of cookiesArray) {
-                cookie = cookie.trim();
-                if (cookie.startsWith(cookieName)) {
-                    return cookie.substring(cookieName.length);
-                }
-            }
-            return '';
+            // this works yay
+            return Cookies.get(name) || '';
         }
 
         function showCookies() {
             console.log('Showing cookies:', { email, firstname });
 
+            // log the entire cookie string to the console
             let cookieString = document.cookie;
             console.log(cookieString);
 
+            // Create paragraph element to display cookie info
             let p = document.createElement('p');
             p.textContent = `Email: ${email.value} - Firstname: ${firstname.value}`;
 
+            // append paragraph to the body
             document.body.appendChild(p);
         }
     </script>
