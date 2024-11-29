@@ -70,17 +70,12 @@
         }
 
         function displayCart() {
-            const cartContentDiv = document.querySelector('.cart-content');
-            if (cartDiv) {
-                while (cartDiv.firstChild) {
-                    cartDiv.removeChild(cartDiv.firstChild);
-                }
+            let cartContentDiv = document.querySelector('.cart-content');
+            if (!cartContentDiv) {
+                cartContentDiv = document.createElement('div');
+                cartContentDiv.className = 'cart-content';
+                document.body.appendChild(cartContentDiv);
             }
-
-            const h2 = document.createElement('h2');
-            cartContentDiv.className = 'cart-content';
-            document.body.appendChild(cartContentDiv);
-
             updateCart();
         }
 
