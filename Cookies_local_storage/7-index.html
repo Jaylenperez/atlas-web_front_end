@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 - Advanced use of web storage</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+</head>
+<body>
+    <!-- JAVASCRIPT -->
+    <script>
+        // Setup
+        const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+        if (typeof(Storage) !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one");
+        }
+
+        function getCartFromStorage() {
+            const cartString = sessionStorage.getItem('cart');
+            if (cartString) {
+                return JSON.parse(cartString);
+            } else {
+                return {};
+            }
+        }
+
+        function addItemToCart(item) {
+            let cart = getCartFromStorage();
+            if (cart[item]) {
+                cart[item]++;
+            } else {
+                cart[item] = 1;
+            }
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function removeItemfromCart(item) {
+            let cart = getCartFromStorage();
+            delete cart[item];
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            sessionStorage.removeItem('cart');
+            displayCart();
+        }
+
+        function createStore() {
+            const h2 = document.createElement('h2');
+            h2.textContent = 'Available products:';
+            document.body.appendChild(h2);
+
+            const ul = document.createElement('ul');
+
+            availableItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                li.addEventListener('click', () => addItemToCart(item));
+                ul.appendChild(li);
+            });
+
+            document.body.appendChild(ul);
+        }
+
+        function displayCart() {
+            const cartContentDiv = document.querySelector('.cart-content');
+            if (cartDiv) {
+                while (cartDiv.firstChild) {
+                    cartDiv.removeChild(cartDiv.firstChild);
+                }
+            }
+
+            const h2 = document.createElement('h2');
+            cartContentDiv.className = 'cart-content';
+            document.body.appendChild(cartContentDiv);
+
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartContentDiv = document.querySelector('.cart-content');
+    
+            if (cartContentDiv) {
+                // Check if the cart is empty
+                if (Object.keys(getCartFromStorage()).length === 0) {
+                    const emptyMessage = document.createElement('p');
+                    emptyMessage.textContent = 'Your cart is empty';
+                    cartContentDiv.appendChild(emptyMessage);
+                } else {
+                    // Get the cart contents
+                    const cart = getCartFromStorage();
+
+                    // Clear existing content
+                    while (cartContentDiv.firstChild) {
+                        cartContentDiv.removeChild(cartContentDiv.firstChild);
+                    }
+
+                    // Add clear cart button
+                    const clearButton = document.createElement('button');
+                    clearButton.textContent = 'Clear my cart';
+                    clearButton.addEventListener('click', clearCart);
+                    cartContentDiv.appendChild(clearButton);
+
+                    // Create list items for each item in the cart
+                    Object.entries(cart).forEach(([item, quantity]) => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item} x ${quantity}`;
+                
+                        // Add remove button to each item
+                        const removeButton = document.createElement('button');
+                        removeButton.textContent = 'Remove';
+                        removeButton.addEventListener('click', () => removeItemfromCart(item));
+                        li.appendChild(removeButton);
+
+                        cartContentDiv.appendChild(li);
+                    });
+                }
+            }
+        }
+    </script>
+</body>
