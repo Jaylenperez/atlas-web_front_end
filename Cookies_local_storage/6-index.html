@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7 - Session Storage</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+</head>
+<body>
+    <!-- JAVASCRIPT -->
+    <script>
+        // Setup
+        const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+        if (typeof(Storage) !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one");
+        }
+
+        function addItemToCart(item) {
+            // Adds item to session storage
+            sessionStorage.setItem(item, 'true');
+            console.log(`${item} has been added to the cart.`);
+        }
+
+        function createStore() {
+            // Create <ul> element
+            const ul = document.createElement('ul');
+
+            // Loop through the availableItems array
+            availableItems.forEach(item => {
+                // Create <li> element
+                const li = document.createElement('li');
+
+                // Set text of the <li> to the item name
+                li.textContent = item;
+
+                // Add click event listener to call addItemToCart
+                li.addEventListener('click', () => addItemToCart(item));
+
+                // Append the <li> to the <ul>
+                ul.appendChild(li);
+            });
+
+            // Append <ul> to the body
+            document.body.appendChild(ul);
+        }
+
+        function displayCart() {
+            // Check if session storage contains any items
+            const cartItems = Object.keys(sessionStorage);
+            if (cartItems.length === 0) {
+                return; // does nothing if cart is empty
+            }
+
+            // Create <p> element with the message
+            const p = document.createElement('p');
+            p.textContent = `You previously had ${cartItems.length} items in your cart`;
+
+            // Append <p> element to the body
+            document.body.appendChild(p);
+        }
+    </script>
+</body>
+</html>
