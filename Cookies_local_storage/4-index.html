@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Cookie</title>
+    <title>Task 5 - Use js-cookie</title>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <style>
         button {
@@ -114,9 +114,7 @@
             Cookies.set('firstname', firstname, { expires: expires });
             Cookies.set('email', email, { expires: expires });
 
-            console.log('Cookie set with expiration date:');
-            console.log(`firstname cookie expires on: ${new Date(Cookies.get('firstname').expires).toLocaleString()}`);
-            console.log(`email cookie expires on: ${new Date(Cookies.get('email').expires).toLocaleString()}`);
+            console.log(`Cookie created with expiration date: ${expires}`);
             //showWelcomeMessageOrForm();
         }
 

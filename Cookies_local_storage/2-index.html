@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Cookie</title>
+    <title>Task 3 - Read Cookie</title>
     <style>
         button {
             background-color: white;
@@ -37,7 +37,7 @@
                 document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expirationDate.toUTCString()}; path=/`;
                 document.cookie = `email=${encodeURIComponent(email)}; expires=${expirationDate.toUTCString()}; path=/`;
 
-                console.log('Cookies set successfully');
+                console.log(`Cookie created with expiration date: ${expires}`);
             }
         }
 

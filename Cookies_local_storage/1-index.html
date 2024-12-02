@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Cookie</title>
+    <title>Task 2 - Expiration Date</title>
     <style>
         button {
             background-color: white;
@@ -45,6 +45,8 @@
             // Set Cookies with expiration and path
             document.cookie = `firstname=${encodeURIComponent(firstname)}; expires=${expires}; path=/;`;
             document.cookie = `email=${encodeURIComponent(email)}; expires=${expires}; path=/;`;
+
+            console.log(`Cookie created with expiration date: ${expires}`);
         }
 
         function showCookies() {
