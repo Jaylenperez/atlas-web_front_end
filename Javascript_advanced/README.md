@@ -11,8 +11,6 @@
         <br>
         :floppy_disk: <a href="#requirements">Requirements</a>
         <br>
-        :calling: <a href="#usage">Usage</a>
-        <br>
         :camera: <a href="#pictures">Pictures</a>
         <br>
         :alien: <a href="#authors">Authors</a>
@@ -41,13 +39,13 @@ By the end of this project, you should be able to:
 * A README.md file, at the root of the folder of the project, is mandatory
 * Your code should use the js extension
 
-## :calling: <spam id="usage">Usage</span>
-
-**How to use the project with examples**
-
 ## :camera: <span id="photos">Photos</span>
 
-(https://github.com/yourusername/yourrepository/images/yourimage.png)
+
+https://github.com/user-attachments/assets/5922700b-6f3b-4a03-9d3d-8e2976e8c63a
+
+
+
 
 ## :sparkles: <span id="authors">Authors</span>
 

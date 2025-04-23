@@ -11,6 +11,8 @@
         <br>
         :bangbang: <a href="#requirements">Requirements</a>
         <br>
+        :camera: <a href="demo">Demo</a>
+        <br>
         :sparkles: <a href="#authors">Authors</a>
 </details>
 
@@ -49,6 +51,10 @@ By the end of this project, you should be able to:
 - Your code should use the js extension
 - All of your code will be compiled/executed on Ubuntu 18.04 using Node 12.x and npm 6.x
 - src/index.js should stay empty - all your Javascript must be in your HTML, inside <script> tag
+
+## :camera: <span id="demo">Demo</span>
+![CookiesLocalStorage-MadewithClipchamp-ezgif com-optimize (1)](https://github.com/user-attachments/assets/8aae50f6-0d19-4693-b8bf-2fce27679eb4)
+
 
 ## :sparkles: <span id="authors">Authors</span>
 
