@@ -41,8 +41,6 @@ project, is mandatory
 ![Screenshot 2025-04-23 120545](https://github.com/user-attachments/assets/23f9041d-46f5-4f64-874a-3fa7dd236b02)
 
 
-- Github: [@Jaylenperez](https://github.com/Jaylenperez)
-
 ## :sparkles: <span id="authors">Authors</span>
 
 **Jaylen Perez**
