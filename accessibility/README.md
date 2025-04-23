@@ -38,7 +38,11 @@ Key skills developed:
 
 ## :camera: <span id="photos">Photos</span>
 
-<img src="images/bootstrap.png" width="800" height="350">
+
+
+https://github.com/user-attachments/assets/e2710efa-8050-457a-a7b3-f38e1a8aa848
+
+
 
 ## :sparkles: <span id="authors">Authors</span>
 
