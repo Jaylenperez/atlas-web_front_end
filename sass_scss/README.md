@@ -33,8 +33,6 @@ This project will guide you through building modular, maintainable styles using 
 
 `git clone https://github.com/Jaylenperez/sass_scss.git`
 
-## :camera: <span id="photos">Photos</span>
-
 ## :sparkles: <span id="authors">Authors</span>
 
 **Jaylen Perez**
