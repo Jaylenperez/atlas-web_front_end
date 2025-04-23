@@ -21,8 +21,8 @@ This “HTML Advanced (Max’s Version)” project challenges you to translate a
 
 Throughout the project, you’ll demonstrate mastery of:
 
-- Semantic sectioning (<header>, <main>, <section>, <footer>)
-- Proper use of heading levels (<h1>–<h3>) and grouping elements
+- Semantic sectioning
+- Proper use of heading levels and grouping elements
 - Accessible markup for images, buttons, and links
 - Clean, W3C-valid HTML that reflects the original Figma design
 
