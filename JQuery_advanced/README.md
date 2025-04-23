@@ -11,6 +11,8 @@
         <br>
         :floppy_disk: <a href="#requirements">Requirements</a>
         <br>
+        :camera: <a href="#demo">Demo</a>
+        <br>
         :sparkles: <a href="#authors">Authors</a>
 </details>
 
@@ -33,6 +35,17 @@ By the end of this project, you should be able to:
 * All your files should end with a new line
 * A README.md file, at the root of the folder of the
 project, is mandatory
+
+## :camera: <span id="demo">Demo</span>
+
+![Screenshot 2025-04-23 120545](https://github.com/user-attachments/assets/23f9041d-46f5-4f64-874a-3fa7dd236b02)
+
+
+## :sparkles: <span id="authors">Authors</span>
+
+**Jaylen Perez**
+
+- Github: [@Jaylenperez](https://github.com/Jaylenperez)
 
 ## :sparkles: <span id="authors">Authors</span>
 
