@@ -33,6 +33,9 @@
 
 ## :camera: <span id="photos">Photos</span>
 
+![Screenshot 2025-04-23 124556](https://github.com/user-attachments/assets/23ac1a0a-d1ca-4500-a7da-48277bbc0ac7)
+
+
 ## :sparkles: <span id="authors">Authors</span>
 
 **Jaylen Perez**
