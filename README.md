@@ -10,10 +10,6 @@
         <br>
         :sparkles: <a href="#about-me">About Me</a>
         <br>
-        :floppy_disk: <a href="#requirements">Requirements</a>
-        <br>
-        :wrench: <a href="#installation">Installation</a>
-        <br>
         :camera: <a href="#pictures">Pictures</a>
         <br>
         :sparkles: <a href="#authors">Authors</a>
@@ -52,17 +48,7 @@ This is a centralized collection of front-end web development projects.
 
 ## :sparkles: <span id="about-me">About Me</span>
 
-Hi, I’m Jaylen Perez—a Full-Stack Engineer and Computer Science student at Atlas School in Tulsa, OK. I’m passionate about crafting responsive, accessible front-end experiences and continually exploring new web technologies. Let’s connect: [LinkedIn](https://www.linkedin.com/in/jaylen-perez) • [Twitter @jaylenPerez](https://twitter.com/jaylenPerez) • view my Portfolio Project on GitHub [here](https://github.com/jaylen-perez/portfolio-project).
-
-## :floppy_disk: <span id="requirements">Requirements</span>
-
-- Bootstrap 4.4.1 should be used via a CDN link added in the (<head>) section of the HTML.
-
-## :wrench: <span id="installation">Installation</span>
-
-**Clone the repository**
-
-`git clone https://github.com/Jaylenperez/Bootstrap.git`
+Hi, I’m Jaylen Perez—a Full-Stack Engineer and Computer Science student at Atlas School in Tulsa, OK. I’m passionate about crafting responsive, accessible front-end experiences and continually exploring new web technologies. Let’s connect: [LinkedIn](www.linkedin.com/in/jaylenperez) • view my Portfolio Project on GitHub [here](https://github.com/jaylen-perez/portfolio-project).
 
 ## :camera: <span id="photos">Photos</span>
 
