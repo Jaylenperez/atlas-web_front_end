@@ -1,6 +1,7 @@
 # <p align="center">Bootstrap (Max's Version)</p>
 
 ## :bookmark: Table of Contents
+
 <details>
         <summary>
         CLICK TO ENLARGE
@@ -21,24 +22,27 @@
 </details>
 
 ## :memo: <span id="description">Description</span>
+
 This project introduces the use of Bootstrap 4.4, focusing exclusively on CSS styling to create responsive, mobile-first web interfaces. As a foundational CSS framework, Bootstrap provides design templates for essential components like typography, forms, buttons, and navigation, which streamline front-end development.
+
 ## :school: <span id="learning objective">Learning Objective</span>
 
 Key skills developed:
 
-* Effective use of containers for layout structuring.
-* Mastery of the grid system to create responsive designs.
-* Utilization of Bootstrap's built-in components.
-* Application of utility classes for consistent styling.
+- Effective use of containers for layout structuring.
+- Mastery of the grid system to create responsive designs.
+- Utilization of Bootstrap's built-in components.
+- Application of utility classes for consistent styling.
+
 ## :floppy_disk: <span id="requirements">Requirements</span>
 
-* Bootstrap 4.4.1 should be used via a CDN link added in the (<head>) section of the HTML
+- Bootstrap 4.4.1 should be used via a CDN link added in the (<head>) section of the HTML
 
 ## :wrench: <span id="installation">Installation</span>
 
 **How to access the application locally**
 
-(https://jaylenperez.github.io/REPO/FOLDER/FILE.html)
+(https://jaylenperez.github.io/Bootstrap/)
 
 ## :calling: <spam id="usage">Usage</span>
 
@@ -46,9 +50,10 @@ Key skills developed:
 
 ## :camera: <span id="photos">Photos</span>
 
-(https://github.com/yourusername/yourrepository/images/yourimage.png)
+<img src="images/bootstrap.png" width="170" height="230">
 
 ## :sparkles: <span id="authors">Authors</span>
 
 **Jaylen Perez**
+
 - Github: [@Jaylenperez](https://github.com/Jaylenperez)
