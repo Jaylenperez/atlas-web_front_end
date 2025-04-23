@@ -41,7 +41,6 @@ Key skills developed:
 **Clone the repository**
 
 `git clone https://github.com/Jaylenperez/Bootstrap.git`
-`cd Bootstrap`
 
 ## :camera: <span id="photos">Photos</span>
 
