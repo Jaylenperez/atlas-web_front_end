@@ -50,7 +50,7 @@ Key skills developed:
 
 ## :camera: <span id="photos">Photos</span>
 
-<img src="images/bootstrap.png" width="170" height="230">
+<img src="images/bootstrap.png" width="500" height="300">
 
 ## :sparkles: <span id="authors">Authors</span>
 
