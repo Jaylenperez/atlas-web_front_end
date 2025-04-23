@@ -14,8 +14,6 @@
         <br>
         :wrench: <a href="#installation">Installation</a>
         <br>
-        :calling: <a href="#usage">Usage</a>
-        <br>
         :camera: <a href="#pictures">Pictures</a>
         <br>
         :sparkles: <a href="#authors">Authors</a>
@@ -40,13 +38,9 @@ Key skills developed:
 
 ## :wrench: <span id="installation">Installation</span>
 
-**How to access the application locally**
+**Clone the repository**
 
-(https://jaylenperez.github.io/Bootstrap/)
-
-## :calling: <spam id="usage">Usage</span>
-
-**How to use the project with examples**
+git clone https://github.com/Jaylenperez/Bootstrap.git
 
 ## :camera: <span id="photos">Photos</span>
 
