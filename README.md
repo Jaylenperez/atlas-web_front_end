@@ -10,8 +10,6 @@
         <br>
         :sparkles: <a href="#about-me">About Me</a>
         <br>
-        :camera: <a href="#pictures">Pictures</a>
-        <br>
         :sparkles: <a href="#authors">Authors</a>
 </details>
 
@@ -49,10 +47,6 @@ This is a centralized collection of front-end web development projects.
 ## :sparkles: <span id="about-me">About Me</span>
 
 Hi, I’m Jaylen Perez—a Full-Stack Engineer and Computer Science student at Atlas School in Tulsa, OK. I’m passionate about crafting responsive, accessible front-end experiences and continually exploring new web technologies. Let’s connect: [LinkedIn](www.linkedin.com/in/jaylenperez) • view my Portfolio Project on GitHub [here](https://github.com/jaylen-perez/portfolio-project).
-
-## :camera: <span id="photos">Photos</span>
-
-<img src="images/bootstrap.png" width="800" height="350">
 
 ## :sparkles: <span id="authors">Authors</span>
 
