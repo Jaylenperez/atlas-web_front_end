@@ -34,6 +34,12 @@ Throughout the project, you’ll demonstrate mastery of:
 
 ## :camera: <span id="photos">Photos</span>
 
+
+
+https://github.com/user-attachments/assets/3b804733-b636-4fa1-9dd7-107e92525a1a
+
+
+
 ## :sparkles: <span id="authors">Authors</span>
 
 **Jaylen Perez**
