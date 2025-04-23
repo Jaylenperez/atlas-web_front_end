@@ -53,7 +53,8 @@ By the end of this project, you should be able to:
 - src/index.js should stay empty - all your Javascript must be in your HTML, inside <script> tag
 
 ## :camera: <span id="demo">Demo</span>
-![CookiesLocalStorage-MadewithClipchamp-ezgif com-optimize](https://github.com/user-attachments/assets/edbb101b-4134-4de8-88f2-89d1f467a5b5)
+![CookiesLocalStorage-MadewithClipchamp-ezgif com-optimize (1)](https://github.com/user-attachments/assets/8aae50f6-0d19-4693-b8bf-2fce27679eb4)
+
 
 ## :sparkles: <span id="authors">Authors</span>
 
