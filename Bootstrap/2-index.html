@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <!-- Set document character encoding -->
         <meta charset="utf-8">
+        <!-- Ensure proper scaling on all devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <!-- Browser tab title -->
         <title>Holberton - Web Stack - Bootstrap</title>
+        <!-- SEO description -->
         <meta name="description" content="Bootstrap is a free and open-source CSS framework">
 
+        <!-- Include Bootstrap CSS from CDN for responsive layout and styling -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+        <!-- Header section with bottom border, padding, margin, and light background -->
         <header class="border-bottom p-2 mb-3 bg-light">
+            <!-- Horizontal list group for navigation items, aligned center -->
             <ul class="list-group list-group-horizontal mb-0 align-items-center">
+                <!-- Logo container set to auto margin-right to push other items right -->
                 <li class="list-group-item mr-auto">
                     <a href="/">
-                        <img src="https://via.placeholder.com/150x50" class="rounded"/>
+                        <!-- Placeholder logo image with rounded corners -->
+                        <img src="https://via.placeholder.com/150x50" class="rounded" alt="Logo"/>
                     </a>
                 </li>
+                <!-- Navigation button: Chemical elements, styled as active secondary button -->
                 <li class="list-group-item">
                     <a href="#" class="btn btn-secondary active">Chemical elements</a>
                 </li>
+                <!-- Navigation button: Profile, styled as active secondary button -->
                 <li class="list-group-item">
                     <a href="#" class="btn btn-secondary active">Profile</a>
                 </li>
             </ul>
         </header>
 
+        <!-- Main content container spanning full width -->
         <main class="container-fluid">
+            <!-- Alert section to introduce the chemical elements list -->
             <section>
+                <!-- Bootstrap alert with info styling -->
                 <div role="alert" class="alert alert-info">
+                    <!-- Alert heading -->
                     <h4 class="alert-heading">List of chemical elements</h4>
+                    <!-- Descriptive text -->
                     <p>This is a list of the 5 first chemical elements which have been identified as of 2019.</p>
+                    <!-- Horizontal rule to separate content -->
                     <hr>
+                    <!-- Secondary text without bottom margin, contains external link -->
                     <p class="mb-0">A popular visualization of all 118 elements is <a href="https://en.wikipedia.org/wiki/Periodic_table">the periodic table of the elements</a>.</p>
                 </div>
             </section>
 
+            <!-- Table section for displaying element data -->
             <section>
+                <!-- Section title with top and bottom margin, badge for count -->
                 <h1 class="mb-4 mt-5">Chemical elements <span class="badge badge-info">only 5</span></h1>
 
+                <!-- Responsive table wrapper for small to large screens -->
                 <div class="table-responsive-lg">
+                    <!-- Dark-themed table with hover effect -->
                     <table class="table table-dark table-hover">
+                        <!-- Table header defining column labels -->
                         <thead>
                             <tr>
                                 <th scope="col">Atomic number</th>
@@ -57,7 +80,9 @@
                                 <th scope="col">Abundance in Earth's crust</th>
                             </tr>
                         </thead>
+                        <!-- Table body with data rows for each element -->
                         <tbody>
+                            <!-- Hydrogen row -->
                             <tr>
                                 <td>1</td>
                                 <td>H</td>
@@ -73,6 +98,7 @@
                                 <td>2.20</td>
                                 <td>1400</td>
                             </tr>
+                            <!-- Helium row -->
                             <tr>
                                 <td>2</td>
                                 <td>He</td>
@@ -82,12 +108,13 @@
                                 <td>1</td>
                                 <td>4.002602</td>
                                 <td>0.0001785</td>
-                                <td>—</td>
+                                <td>&mdash;</td>
                                 <td>4.22</td>
                                 <td>5.193</td>
-                                <td>–</td>
+                                <td>&ndash;</td>
                                 <td>0.008</td>
                             </tr>
+                            <!-- Lithium row -->
                             <tr>
                                 <td>3</td>
                                 <td>Li</td>
@@ -103,6 +130,7 @@
                                 <td>0.98</td>
                                 <td>20</td>
                             </tr>
+                            <!-- Beryllium row -->
                             <tr>
                                 <td>4</td>
                                 <td>Be</td>
@@ -118,6 +146,7 @@
                                 <td>1.57</td>
                                 <td>2.8</td>
                             </tr>
+                            <!-- Boron row -->
                             <tr>
                                 <td>5</td>
                                 <td>B</td>
@@ -127,7 +156,7 @@
                                 <td>2</td>
                                 <td>10.81</td>
                                 <td>2.34</td>
-                                <td>2349</span></td>
+                                <td>2349</td>
                                 <td>4200</td>
                                 <td>1.026</td>
                                 <td>2.04</td>

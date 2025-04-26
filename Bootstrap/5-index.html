@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <!-- Set character encoding for the document -->
         <meta charset="utf-8">
+        <!-- Ensure proper rendering and touch zooming on mobile devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <!-- Document title displayed in the browser tab -->
         <title>Holberton - Web Stack - Bootstrap</title>
+        <!-- Meta description for search engines -->
         <meta name="description" content="Bootstrap is a free and open-source CSS framework">
 
+        <!-- Bootstrap CSS library for styling and responsive utilities -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+        <!-- Heading visible only on small devices (xs to sm) -->
         <h1 class="d-block d-md-none">Small title</h1>
+        <!-- Heading visible only on medium devices and larger (md and up) -->
         <h1 class="d-none d-md-block">Big title</h1>
 
+        <!-- Responsive container with info background, padding, rounded corners, and border -->
         <div class="container-md bg-info p-2 rounded border border-info d-flex justify-content-between">
+            <!-- Left content: text aligned to start, light text color, bottom and right borders, padding -->
             <div class="text-start text-light border-bottom border-right border-light p-2">Left</div>
+            <!-- Middle content: centered text, light text color, hidden on small screens, shadow, padding, and borders -->
             <div class="text-center text-light border-bottom border-right border-left p-2 d-none d-md-block shadow">Middle</div>
+            <!-- Right content: text aligned to end, light text color, bottom and left borders, padding -->
             <div class="text-end text-light border-bottom border-left border-light p-2">Right</div>
         </div>
 
